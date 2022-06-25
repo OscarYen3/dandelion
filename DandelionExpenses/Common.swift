@@ -55,6 +55,7 @@ func rotateToPotrait() {
 extension UserDefaults {
     private enum Key : String {
         case Account = "Account"
+        case Accounts = "Accounts"
     }
     
     static var Account: String? {
@@ -72,7 +73,20 @@ extension UserDefaults {
         }
     }
     
-    
+    static var Accounts: String? {
+        get {
+            let defs = UserDefaults.standard
+            return defs.string(forKey: Key.Accounts.rawValue)
+        }
+        set(value) {
+            let defs = UserDefaults.standard
+            if let value = value {
+                defs.set(value, forKey: Key.Accounts.rawValue)
+                return
+            }
+            defs.removeObject(forKey: Key.Accounts.rawValue)
+        }
+    }
     
     
 }

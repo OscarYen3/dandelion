@@ -107,7 +107,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             let cell = tableView.dequeueReusableCell(withIdentifier: Common.xib_CharacterCell, for: indexPath) as! CharacterCell
             var negativenumber: Int = 0
             cell.selectionStyle = .none
-            cell.lblName.text = nameList[indexPath.row] as! String
+            cell.lblName.text = (nameList[indexPath.row] as! String)
             cell.lblAmount.text = String(sumAmount2(nameList[indexPath.row] as! String))
             negativenumber = sumAmount2(nameList[indexPath.row] as! String)
             if negativenumber < 0 {
@@ -288,8 +288,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     
     func addData(_ profile: DeatilProfile) {
-        var ref: DocumentReference? = nil
-        ref = db.collection(UserDefaults.Account ?? Common.collection2).addDocument(data: [
+//        var ref: DocumentReference? = nil
+            _ = db.collection(UserDefaults.Account ?? Common.collection2).addDocument(data: [
             "name": profile.name,
             "category": profile.category,
             "use": profile.use,

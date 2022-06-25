@@ -6,6 +6,13 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+import Network
+import MessageUI
+import Messages
+import FirebaseMessaging
+
 protocol AccountListDlgDelegate {
     func ChangeAccount()
 }
@@ -17,6 +24,8 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     let toolBar = UIToolbar()
     var accountValue: String = ""
     var _delegate:AccountListDlgDelegate?
+    let db = Firestore.firestore()
+    
 
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var btnConfirm: UIButton!
@@ -136,6 +145,64 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         _delegate?.ChangeAccount()
         dismiss(animated: true)
     }
+    
+    func dataConvert(target: QueryDocumentSnapshot){
+        let data: AccountList = AccountList()
+        for i in target.data() {
+            switch i.key {
+            case "accounts":
+                data.accounts = i.value as! [String]
+            default:
+                break
+            }
+            
+        }
+        
+        insertObject(DeatilProfile(data))
+        
+    }
+    
+    func deleteDocument(_ target: String?) {
+        guard let newTarget = target else { return }
+        db.collection(UserDefaults.Account ?? Common.collection2).document(newTarget).delete() { err   in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
+        }
+    
+    func addData(_ profile: DeatilProfile) {
+        _ = db.collection(UserDefaults.Account ?? Common.collection2).addDocument(data: [
+            "name": profile.name,
+            "category": profile.category,
+            "use": profile.use,
+            "amount": profile.amount,
+            "date": profile.date,
+            "userCode": profile.userCode,
+            "whos": profile.whos,
+          ]) { (error) in
+              if let error = error {
+                  print(error)
+              }
+          }
+      }
+    
+    func updateData(_ target: Int, _ data: DeatilProfile) {
+        db.collection(UserDefaults.Account ?? Common.collection2).whereField("userCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
+               if let querySnapshot = querySnapshot {
+                   let document = querySnapshot.documents.first
+                document?.reference.updateData(["name":data.name])
+                document?.reference.updateData(["category":data.category])
+                document?.reference.updateData(["use":data.use])
+                document?.reference.updateData(["amount":data.amount])
+                document?.reference.updateData(["date":data.date])
+                document?.reference.updateData(["whos": data.whos], completion: { (error) in
+                   })
+               }
+           }
+       }
 }
 
 

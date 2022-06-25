@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0D903F27D25E8100629B72 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0D903E27D25E8100629B72 /* AccountModel.swift */; };
 		0C4B9589276911A700F8F644 /* AddMemberDlg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4B9587276911A700F8F644 /* AddMemberDlg.swift */; };
 		0C4B958A276911A700F8F644 /* AddMemberDlg.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C4B9588276911A700F8F644 /* AddMemberDlg.xib */; };
 		0C769FA327679C3C0012BD99 /* CoreDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C769FA227679C3C0012BD99 /* CoreDataDB.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0D903E27D25E8100629B72 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		0C4B9587276911A700F8F644 /* AddMemberDlg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberDlg.swift; sourceTree = "<group>"; };
 		0C4B9588276911A700F8F644 /* AddMemberDlg.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMemberDlg.xib; sourceTree = "<group>"; };
 		0C769FA227679C3C0012BD99 /* CoreDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDB.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				0C769FA227679C3C0012BD99 /* CoreDataDB.swift */,
 				0C77A2C52766772700952A79 /* Common.swift */,
 				0C77A2CC2766773B00952A79 /* DeatilProfile.swift */,
+				0C0D903E27D25E8100629B72 /* AccountModel.swift */,
 				0C77A2AE2766765300952A79 /* ViewController.swift */,
 				0C77A2C82766772F00952A79 /* CreateView.swift */,
 				0C4B9587276911A700F8F644 /* AddMemberDlg.swift */,
@@ -285,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C0D903F27D25E8100629B72 /* AccountModel.swift in Sources */,
 				0C89A69F276CD9D00032CD8D /* CharacterCell.swift in Sources */,
 				0C769FA42767A5030012BD99 /* DandelionExpensesDB.xcdatamodeld in Sources */,
 				0C89A697276CC9740032CD8D /* CharacterList.swift in Sources */,

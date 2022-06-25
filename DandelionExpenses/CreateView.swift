@@ -199,7 +199,7 @@ class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPi
     }
     @objc func doneClick()  {
         if nameValue == "" {
-            txtName.text = pickerNameList[0] as? String
+            txtName.text = pickerNameList[0]
         } else {
             txtName.text = nameValue
         }
@@ -216,7 +216,7 @@ class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPi
     @objc func save() {
         
         let sumValue = Int(txtAmount.text ?? "") ?? 0
-        let unitValue = whos.count
+//        let unitValue = whos.count
         let data = DeatilProfile()
         data.name = txtName.text ?? ""
         data.category = txtCategory.text ?? ""
@@ -374,7 +374,7 @@ extension CreateView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Common.xib_NameCell, for: indexPath as IndexPath) as! NameCell
-        cell.lblName.text = nameList[indexPath.row] as! String
+        cell.lblName.text = nameList[indexPath.row] as? String
         cell.inmgSelect.isHidden = !check(nameList[indexPath.row] as! String)
         cell.delegate = self
         return cell
