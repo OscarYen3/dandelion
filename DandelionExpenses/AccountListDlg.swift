@@ -146,21 +146,22 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         dismiss(animated: true)
     }
     
-    func dataConvert(target: QueryDocumentSnapshot){
-        let data: AccountList = AccountList()
-        for i in target.data() {
-            switch i.key {
-            case "accounts":
-                data.accounts = i.value as! [String]
-            default:
-                break
-            }
-            
-        }
-        
-        insertObject(DeatilProfile(data))
-        
-    }
+    //07/04 還用不到
+//    func dataConvert(target: QueryDocumentSnapshot){
+//        let data: AccountList = AccountList()
+//        for i in target.data() {
+//            switch i.key {
+//            case "accounts":
+//                data.accounts = i.value as! [String]
+//            default:
+//                break
+//            }
+//
+//        }
+//
+//        insertObject(DeatilProfile(data))
+//
+//    }
     
     func deleteDocument(_ target: String?) {
         guard let newTarget = target else { return }

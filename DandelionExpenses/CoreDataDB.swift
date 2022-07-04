@@ -125,47 +125,47 @@ func insertAccount(_ obj: AccountList) {
 
 //刪除資料(全部只有一筆，不用刪除)
 
-
-//更新資料
-func updateAccount(_ data:AccountList) {
-    //更新:將查詢到的結果更新後，再呼叫context.save()儲存
-    let request = NSFetchRequest<DeatilDB>(entityName: "AccountDB")
-    do {
-        let results = try viewContext.fetch(request)
-        for item in results {
-            if item.name == data.name {
-                item.category = data.category
-                item.use = data.use
-                item.amount = Int32(data.amount)
-            }
-        }
-        app.saveContext()
-    }catch{
-        fatalError("Failed to fetch data: \(error)")
-    }
-}
-
-//查詢資料
-func selectAccount() -> Array<AccountList> {
-    var array:[AccountDB] = []
-    var ConvertArray: [AccountList] = []
-    let request = NSFetchRequest<DeatilDB>(entityName: "AccountDB")
-    do {
-        let results = try viewContext.fetch(request)
-        for result in results {
-            array.append(result)
-        }
-    }catch{
-        fatalError("Failed to fetch data: \(error)")
-    }
-    
-    for i in array {
-        ConvertArray.append(AccountList(i))
-    }
-    
-    ConvertArray.sort { $0.userCode > $1.userCode}
-    return ConvertArray
-    
-}
+//07/04 還用不到
+////更新資料
+//func updateAccount(_ data:AccountList) {
+//    //更新:將查詢到的結果更新後，再呼叫context.save()儲存
+//    let request = NSFetchRequest<DeatilDB>(entityName: "AccountDB")
+//    do {
+//        let results = try viewContext.fetch(request)
+//        for item in results {
+//            if item.name == data.name {
+//                item.category = data.category
+//                item.use = data.use
+//                item.amount = Int32(data.amount)
+//            }
+//        }
+//        app.saveContext()
+//    }catch{
+//        fatalError("Failed to fetch data: \(error)")
+//    }
+//}
+//
+////查詢資料
+//func selectAccount() -> Array<AccountList> {
+//    var array:[AccountDB] = []
+//    var ConvertArray: [AccountList] = []
+//    let request = NSFetchRequest<DeatilDB>(entityName: "AccountDB")
+//    do {
+//        let results = try viewContext.fetch(request)
+//        for result in results {
+//            array.append(result)
+//        }
+//    }catch{
+//        fatalError("Failed to fetch data: \(error)")
+//    }
+//    
+//    for i in array {
+//        ConvertArray.append(AccountList(i))
+//    }
+//    
+//    ConvertArray.sort { $0.userCode > $1.userCode}
+//    return ConvertArray
+//    
+//}
 
 
