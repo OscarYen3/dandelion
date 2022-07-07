@@ -13,7 +13,9 @@ import MessageUI
 import Messages
 import FirebaseMessaging
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,CreateViewDelegate, MFMessageComposeViewControllerDelegate,AccountListDlgDelegate {
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,CreateViewDelegate, MFMessageComposeViewControllerDelegate,AccountListDlgDelegate , UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
 
     @IBOutlet weak var btnTab: UIButton!
     @IBOutlet weak var m_table: UITableView!
@@ -22,6 +24,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var btnAccount: UIButton!
     @IBOutlet weak var btnCharacter: UIButton!
     @IBOutlet weak var m_table2: UITableView!
+    @IBOutlet weak var txtName: UITextField!
+    @IBOutlet weak var lblInformation: UILabel!
+    @IBOutlet weak var processView: UIProgressView!
     
     var datailInfo: [DeatilProfile] = []
     var m_oCreateView : CreateView!
@@ -29,23 +34,35 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var m_oAccountDlg : AccountListDlg?
     var m_oCharacterList : CharacterList?
     var debt: Int = 0
-    var nameList: [Any] = []
+    var nameList: [String] = []
+    var m_oCharacterInfoView: CharacterInfoView?
+    var SelectView = UIPickerView()
+    let toolBar = UIToolbar()
+    var nameValue: String = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         rotateToPotrait()
+        txtName.placeholder = "請選擇人物"
+        processView.transform = processView.transform.scaledBy(x: 1, y: 2)
+        processView.trackTintColor = UIColor.systemGroupedBackground
+        processView.progressTintColor = UIColor.systemBrown
+        
+        
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
                 netWork = true
-                print("netWorkSucess")
+                Log.d("netWorkSucess")
                 
             } else {
                 netWork = false
-                print("netWorkFail")
+                Log.d("netWorkFail")
             }
         }
+        
         monitor.start(queue: DispatchQueue.global())
+        m_oCharacterInfoView = CharacterInfoView(nibName: Common.xib_CharacterInfoView, bundle: nil)
         m_oCharacterList = CharacterList(nibName: Common.xib_CharacterList, bundle: nil)
         m_oAccountDlg = AccountListDlg(nibName: Common.xib_AccountListDlg, bundle: nil)
         m_oCreateView = CreateView(nibName: Common.xib_CreateView, bundle: nil)
@@ -54,18 +71,22 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         btnTab.addTarget(self, action: #selector(toCreateView), for: .touchUpInside)
         btnAccount.addTarget(self, action: #selector(toAccount), for: .touchUpInside)
         btnCharacter.addTarget(self, action: #selector(toCharacterList), for: .touchUpInside)
-//        let array = ["Hello", "Swift"]
-//        defaults.set(array, forKey: "NameList")
-       
+        selectViewSet()
         readData()
         
     }
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "蒲工英共同帳本"
-        nameList = defaults.array(forKey: "NameList") ?? []
+        nameList = (defaults.array(forKey: "NameList") ?? []) as? [String] ?? []
         m_table.reloadData()
         m_table2.reloadData()
+        
+        if txtName.text == "" {
+            processView.isHidden = true
+            lblInformation.isHidden = true
+        }
+        
         amountCheck()
     }
     
@@ -107,13 +128,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             let cell = tableView.dequeueReusableCell(withIdentifier: Common.xib_CharacterCell, for: indexPath) as! CharacterCell
             var negativenumber: Int = 0
             cell.selectionStyle = .none
-            cell.lblName.text = (nameList[indexPath.row] as! String)
-            cell.lblAmount.text = String(sumAmount2(nameList[indexPath.row] as! String))
-            negativenumber = sumAmount2(nameList[indexPath.row] as! String)
+            cell.lblName.text = (nameList[indexPath.row] )
+            cell.lblAmount.text = String(sumAmount2(nameList[indexPath.row] ))
+            negativenumber = sumAmount2(nameList[indexPath.row] )
             if negativenumber < 0 {
                 debt += negativenumber
             }
-            lblDebt.text =  String(format: "%@ : %d" , "負債分擔" , debt)
+            lblDebt.text =  String(format: "%d" , debt)
+            
             return cell
         default:
             break
@@ -202,7 +224,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     @objc func toCharacterList() {
         if let oView = m_oCharacterList {
-            nameList = defaults.array(forKey: "NameList") ?? []
+            oView.debt = self.debt
+            nameList = (defaults.array(forKey: "NameList") ?? []) as? [String] ?? []
             oView.characterList = nameList as? [String] ?? []
             oView.datailInfo = datailInfo
             oView.navigationItem.title = "人員列表"
@@ -223,7 +246,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 amount -= i.amount
             }
         }
-        lblAmount.text =  "公費:" + String(amount)
+        lblAmount.text = String(amount)
         debt = 0
         m_table2.reloadData()
     }
@@ -381,6 +404,115 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             }
         }
         return amount
+    }
+    
+    func sumAmount(_ target: String) -> String {
+        var amount: Int = 0
+        for i in datailInfo {
+            for name in i.whos {
+                if name == target {
+                    if i.use == "公費" {
+                        amount += i.amount
+                    } else if i.use == "領錢" {
+                        amount -= i.amount
+                    } else if i.use == "支出" {
+                        if i.name == name   {
+                            amount  += i.amount
+                        }
+                        amount -= i.amount / (i.whos.count)
+                    }
+                }
+            }
+        }
+        return String(amount)
+    }
+
+    @IBAction func toInfo(_ sender: Any) {
+        if txtName.text == "" {
+            doneClick()
+        } else {
+            toInfo(txtName.text ?? "")
+        }
+        
+    }
+    
+    func toInfo(_ name: String) {
+        if let oView = m_oCharacterInfoView {
+            oView.amountValue = sumAmount(name)
+            oView.nameValue = name
+            oView.allDetailInfo = datailInfo
+            oView.navigationItem.title = "詳細資料"
+            self.navigationController?.pushViewController(oView, animated: true)
+        }
+    }
+
+    func selectViewSet() {
+        SelectView = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+        SelectView.delegate = self
+        SelectView.dataSource = self
+        SelectView.backgroundColor = UIColor.white
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = .systemBlue
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "完成", style: UIBarButtonItem.Style.plain, target: self, action:#selector(self.doneClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "取消", style: UIBarButtonItem.Style.plain, target: self, action:#selector(self.cancelClick))
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        txtName.inputView = SelectView
+        txtName.inputAccessoryView = toolBar
+
+    }
+    
+    @objc func doneClick()  {
+        if nameValue == "" {
+            txtName.text = nameList[0]
+        } else {
+            txtName.text = nameValue
+        }
+        processView.progress = (Float(sumAmount(txtName.text ?? "")) ?? 0) / Float(debt)
+        lblInformation.text = sumAmount(txtName.text ?? "")
+        processView.isHidden = false
+        lblInformation.isHidden = false
+        self.view.endEditing(true)
+        toolBar.endEditing(true)
+    }
+    
+    @objc func cancelClick() {
+        self.view.endEditing(true)
+        toolBar.endEditing(true)
+    }
+    
+    //================================================================================================
+    // MARK: - SelectBeanType
+    //================================================================================================
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return  1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return nameList.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            return nameList[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        nameValue = nameList[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int,
+                    forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel = view as? UILabel
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont.systemFont(ofSize: 22)
+        }
+        pickerLabel?.numberOfLines = 0
+        pickerLabel?.minimumScaleFactor = 0.6
+        pickerLabel?.textAlignment = .center
+
+        pickerLabel?.text = nameList[row]
+        return pickerLabel!
     }
 }
 

@@ -12,6 +12,7 @@ class CharacterCell: UITableViewCell {
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
+    @IBOutlet weak var processView: UIProgressView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

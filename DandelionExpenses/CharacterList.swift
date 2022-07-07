@@ -12,7 +12,8 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource 
     var characterList : [String] = []
     var datailInfo: [DeatilProfile] = []
     var m_oCharacterInfoView: CharacterInfoView?
-    var nameList: [Any] = []
+    var nameList: [String] = []
+    var debt: Int = 0
     
     @IBOutlet weak var m_table: UITableView!
     
@@ -25,7 +26,7 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        nameList = defaults.array(forKey: "NameList") ?? []
+        nameList = (defaults.array(forKey: "NameList") ?? []) as? [String] ?? []
         m_table.reloadData()
     }
 
@@ -37,14 +38,15 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: Common.xib_CharacterCell, for: indexPath) as! CharacterCell
         cell.selectionStyle = .none
         cell.lblName.text = characterList[indexPath.row]
-        cell.lblAmount.text = sumAmount(nameList[indexPath.row] as! String)
+        cell.lblAmount.text = sumAmount(nameList[indexPath.row] )
+        cell.processView.progress = (Float(sumAmount(nameList[indexPath.row] )) ?? 0) / Float(debt)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let oView = m_oCharacterInfoView {
-            oView.amountValue = sumAmount(nameList[indexPath.row] as! String)
+            oView.amountValue = sumAmount(nameList[indexPath.row] )
             oView.nameValue = characterList[indexPath.row]
             oView.allDetailInfo = datailInfo
             oView.navigationItem.title = "詳細資料"
