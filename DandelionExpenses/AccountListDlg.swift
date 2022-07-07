@@ -98,7 +98,8 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         } else {
             txtAccount.text = accountValue
         }
-            
+        
+      
         self.view.endEditing(true)
         toolBar.endEditing(true)
         UserDefaults.Account = accountValue
@@ -124,6 +125,7 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         let okAction = UIAlertAction(title: "確定", style: .default) { [unowned controller] _ in
             UserDefaults.Account = controller.textFields?[0].text
             self.txtAccount.text = UserDefaults.Account
+            
         }
         controller.addAction(okAction)
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -142,6 +144,12 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
             let array = ["option1"]
             defaults.set(array, forKey: "NameList")
         }
+        
+        let topic = UserDefaults.Account ?? ""
+        for i in self.accountList {
+            Messaging.messaging().unsubscribe(fromTopic: i)
+        }
+        Messaging.messaging().subscribe(toTopic: topic)
         _delegate?.ChangeAccount()
         dismiss(animated: true)
     }
