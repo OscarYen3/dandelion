@@ -14,15 +14,42 @@ class CharacterInfoView: UIViewController,UITableViewDelegate,UITableViewDataSou
     @IBOutlet weak var m_table: UITableView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
+    @IBOutlet weak var circleView: UIView!
     var m_oCreateView : CreateView!
     
     var characterInfo : [DeatilProfile] = []
     var allDetailInfo : [DeatilProfile] = []
     var nameValue: String = ""
     var amountValue: String = ""
+    var debt: Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let aDegree = CGFloat.pi / 180
+        let lineWidth: CGFloat = 10
+        let radius: CGFloat = 50
+        let startDegree: CGFloat = 270
+        let circlePath = UIBezierPath(ovalIn: CGRect(x: lineWidth, y: lineWidth, width: radius*2, height: radius*2))
+        let circleLayer = CAShapeLayer()
+        circleLayer.path = circlePath.cgPath
+        circleLayer.strokeColor = UIColor.gray.cgColor
+        circleLayer.lineWidth = lineWidth
+        circleLayer.fillColor = UIColor.clear.cgColor
+        let percentage: CGFloat = CGFloat(debt) * 100
+        let percentagePath = UIBezierPath(arcCenter: CGPoint(x: lineWidth + radius, y: lineWidth + radius), radius: radius, startAngle: aDegree * startDegree, endAngle: aDegree * (startDegree + 360 * percentage / 100), clockwise: true)
+        let percentageLayer = CAShapeLayer()
+        percentageLayer.path = percentagePath.cgPath
+        percentageLayer.strokeColor  = UIColor(red: 0, green: 0, blue: 1, alpha: 1).cgColor
+        percentageLayer.lineWidth = lineWidth
+        percentageLayer.fillColor = UIColor.clear.cgColor
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 2*(radius+lineWidth), height: 2*(radius+lineWidth)))
+        label.textAlignment = .center
+        label.text = "\(amountValue)"
+        
+        lblAmount.layer.addSublayer(circleLayer)
+        lblAmount.layer.addSublayer(percentageLayer)
+        lblAmount.addSubview(label)
+        
         rotateToPotrait()
         m_oCreateView = CreateView(nibName: Common.xib_CreateView, bundle: nil)
         m_table.register(UINib(nibName: Common.xib_ExpensesCell, bundle: nil), forCellReuseIdentifier: Common.xib_ExpensesCell)
@@ -87,6 +114,8 @@ class CharacterInfoView: UIViewController,UITableViewDelegate,UITableViewDataSou
         }
         m_table.reloadData()
     }
+    
+    
     
 
 }

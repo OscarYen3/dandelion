@@ -442,6 +442,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             oView.amountValue = sumAmount(name)
             oView.nameValue = name
             oView.allDetailInfo = datailInfo
+            oView.debt = (Float(sumAmount(name)) ?? 0) / Float(debt)
             oView.navigationItem.title = "詳細資料"
             self.navigationController?.pushViewController(oView, animated: true)
         }
