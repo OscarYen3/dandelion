@@ -22,42 +22,31 @@ class CharacterInfoView: UIViewController,UITableViewDelegate,UITableViewDataSou
     var nameValue: String = ""
     var amountValue: String = ""
     var debt: Float = 0.0
+    var startValue = 0.0
+    var endValue = 1200.0
+   
+    var displaylabel : UILabel?
+
+    let animationDuration = 5.0
+
+    var circleTimer: Timer?
+    var elapsedTime = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let aDegree = CGFloat.pi / 180
-        let lineWidth: CGFloat = 10
-        let radius: CGFloat = 50
-        let startDegree: CGFloat = 270
-        let circlePath = UIBezierPath(ovalIn: CGRect(x: lineWidth, y: lineWidth, width: radius*2, height: radius*2))
-        let circleLayer = CAShapeLayer()
-        circleLayer.path = circlePath.cgPath
-        circleLayer.strokeColor = UIColor.gray.cgColor
-        circleLayer.lineWidth = lineWidth
-        circleLayer.fillColor = UIColor.clear.cgColor
-        let percentage: CGFloat = CGFloat(debt) * 100
-        let percentagePath = UIBezierPath(arcCenter: CGPoint(x: lineWidth + radius, y: lineWidth + radius), radius: radius, startAngle: aDegree * startDegree, endAngle: aDegree * (startDegree + 360 * percentage / 100), clockwise: true)
-        let percentageLayer = CAShapeLayer()
-        percentageLayer.path = percentagePath.cgPath
-        percentageLayer.strokeColor  = UIColor(red: 0, green: 0, blue: 1, alpha: 1).cgColor
-        percentageLayer.lineWidth = lineWidth
-        percentageLayer.fillColor = UIColor.clear.cgColor
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 2*(radius+lineWidth), height: 2*(radius+lineWidth)))
-        label.textAlignment = .center
-        label.text = "\(amountValue)"
-        
-        lblAmount.layer.addSublayer(circleLayer)
-        lblAmount.layer.addSublayer(percentageLayer)
-        lblAmount.addSubview(label)
-        
         rotateToPotrait()
         m_oCreateView = CreateView(nibName: Common.xib_CreateView, bundle: nil)
         m_table.register(UINib(nibName: Common.xib_ExpensesCell, bundle: nil), forCellReuseIdentifier: Common.xib_ExpensesCell)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        displaylabel?.text = ""
+        elapsedTime = 0.0
+        endValue = Double(amountValue) ?? 0
+        circleAnimation()
+        
         lblName.text = nameValue
-        lblAmount.text = amountValue
+        lblAmount.text = ""
         conversionData()
     }
     
@@ -103,6 +92,56 @@ class CharacterInfoView: UIViewController,UITableViewDelegate,UITableViewDataSou
         }
     }
     
+    func circleAnimation() {
+        let aDegree = CGFloat.pi / 180
+        let lineWidth: CGFloat = 20
+        let radius: CGFloat = 55
+        let startDegree: CGFloat = 270
+        let circlePath = UIBezierPath(ovalIn: CGRect(x: lineWidth , y: lineWidth , width: radius*2, height: radius*2))
+        let circleLayer = CAShapeLayer()
+        circleLayer.path = circlePath.cgPath
+        circleLayer.strokeColor = UIColor.systemGray4.cgColor
+        circleLayer.lineWidth = lineWidth
+        circleLayer.fillColor = UIColor.clear.cgColor
+        let percentage: CGFloat = CGFloat(debt) * 100
+        let percentagePath = UIBezierPath(arcCenter: CGPoint(x: lineWidth  + radius, y: lineWidth  + radius), radius: radius, startAngle: aDegree * startDegree, endAngle: aDegree * (startDegree + 360 * percentage / 100), clockwise: true)
+        let percentageLayer = CAShapeLayer()
+        percentageLayer.path = percentagePath.cgPath
+        percentageLayer.strokeColor  = UIColor.clear.cgColor
+        percentageLayer.lineWidth = lineWidth
+        percentageLayer.fillColor = UIColor.clear.cgColor
+        
+        displaylabel = UILabel(frame: CGRect(x: 0, y: 0, width: 2*(radius+lineWidth), height: 2*(radius+lineWidth)))
+        displaylabel?.textAlignment = .center
+        displaylabel?.textColor = UIColor.black
+        displaylabel?.font = UIFont.boldSystemFont(ofSize:  36)
+        displaylabel?.text = "0"
+        
+        lblAmount.layer.addSublayer(circleLayer)
+        lblAmount.layer.addSublayer(percentageLayer)
+        lblAmount.addSubview(displaylabel ?? UILabel())
+        
+        // Set up the appearance of the path.
+        let newLayer = CAShapeLayer()
+        newLayer.path = percentagePath.cgPath
+        newLayer.strokeEnd = 0
+        newLayer.lineWidth = 20
+        newLayer.strokeColor = UIColor(red: 0, green: 0, blue: 1, alpha: 1).cgColor
+        newLayer.fillColor = UIColor.clear.cgColor
+        lblAmount.layer.addSublayer(newLayer)
+        
+        // Create the infinity animation
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.toValue = 1
+        animation.duration = 1
+        animation.autoreverses = false
+        animation.isRemovedOnCompletion = false
+        animation.fillMode  = .forwards
+        newLayer.add(animation, forKey: "line")
+        circleTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(handleUpdate), userInfo: nil, repeats: true)
+        
+    }
+    
     func conversionData() {
         characterInfo = []
         for i in allDetailInfo {
@@ -115,7 +154,20 @@ class CharacterInfoView: UIViewController,UITableViewDelegate,UITableViewDataSou
         m_table.reloadData()
     }
     
-    
-    
+    @objc func handleUpdate() {
+        elapsedTime += 0.5
+        if elapsedTime > animationDuration {
+            self.displaylabel?.text = "\(Int(endValue))"
+            if let timer = circleTimer {
+                timer.invalidate()
+            }
+            circleTimer = nil
+            
+        } else {
+            let percentage = elapsedTime / animationDuration
+            let value = startValue + percentage * (endValue - startValue)
+            self.displaylabel?.text = "\(Int(value))"
+        }
+    }
 
 }

@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKO-Nf-3dl">
-                    <rect key="frame" x="30" y="151.5" width="144" height="45"/>
+                    <rect key="frame" x="30" y="126.5" width="194" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="yQr-O9-1Zj"/>
                     </constraints>
@@ -31,10 +31,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhU-px-I8r">
-                    <rect key="frame" x="184" y="74" width="200" height="200"/>
-                    <color key="backgroundColor" red="0.47058823529999999" green="0.35294117650000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="234" y="74" width="150" height="150"/>
+                    <color key="backgroundColor" red="0.86012121389821639" green="0.55146528544513462" blue="0.19619615323276707" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="a2h-ok-SZc"/>
+                        <constraint firstAttribute="width" constant="150" id="a2h-ok-SZc"/>
                         <constraint firstAttribute="width" secondItem="IhU-px-I8r" secondAttribute="height" multiplier="1:1" id="mJl-fe-d4k"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -42,14 +42,14 @@
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="60"/>
+                            <integer key="value" value="75"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="THs-96-eTb">
-                    <rect key="frame" x="0.0" y="294" width="414" height="30"/>
+                    <rect key="frame" x="0.0" y="244" width="414" height="30"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11h-vx-S2w">
                             <rect key="frame" x="0.0" y="0.0" width="88.5" height="30"/>
@@ -81,7 +81,7 @@
                     </constraints>
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YQQ-LE-cS8">
-                    <rect key="frame" x="0.0" y="334" width="414" height="562"/>
+                    <rect key="frame" x="0.0" y="284" width="414" height="612"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="kVg-II-Jfg"/>
