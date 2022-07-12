@@ -39,10 +39,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var SelectView = UIPickerView()
     let toolBar = UIToolbar()
     var nameValue: String = ""
-    
+    var m_oSideMenu : SideMenuView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        m_oSideMenu = SideMenuView(nibName: "SideMenuView", bundle: nil)
         rotateToPotrait()
         txtName.placeholder = "請選擇人物"
         processView.transform = processView.transform.scaledBy(x: 1, y: 2)
@@ -89,6 +90,50 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         
         amountCheck()
+    }
+    
+    func AddSideMenuButton() {
+            let btnShowMenu = UIButton(type: UIButton.ButtonType.custom)
+            btnShowMenu.setImage(DefaultMenuImage(), for: .normal)
+            btnShowMenu.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            btnShowMenu.addTarget(self, action: #selector(onSlideMenuButtonPressed(_:)), for: UIControl.Event.touchUpInside)
+            let customBarItem = UIBarButtonItem(customView: btnShowMenu)
+            self.navigationItem.leftBarButtonItem = customBarItem
+        }
+    
+    func DefaultMenuImage() -> UIImage {
+          var defaultMenuImage = UIImage()
+          
+          UIGraphicsBeginImageContextWithOptions(CGSize(width: 30, height: 22), false, 0.0)
+          
+          UIColor.black.setFill()
+          UIBezierPath(rect: CGRect(x: 0, y: 3, width: 30, height: 1)).fill()
+          UIBezierPath(rect: CGRect(x: 0, y: 10, width: 30, height: 1)).fill()
+          UIBezierPath(rect: CGRect(x: 0, y: 17, width: 30, height: 1)).fill()
+          
+          UIColor.white.setFill()
+          UIBezierPath(rect: CGRect(x: 0, y: 4, width: 30, height: 1)).fill()
+          UIBezierPath(rect: CGRect(x: 0, y: 11,  width: 30, height: 1)).fill()
+          UIBezierPath(rect: CGRect(x: 0, y: 18, width: 30, height: 1)).fill()
+          
+          defaultMenuImage = #imageLiteral(resourceName: "Profiles") //UIGraphicsGetImageFromCurrentImageContext()!
+          
+          UIGraphicsEndImageContext()
+          
+          return defaultMenuImage;
+      }
+    
+    @objc func onSlideMenuButtonPressed(_ sender : UIButton) {
+        Log.d("onSlideMenuButtonPressed")
+        sender.tag = 10
+        
+        if let sidemenu = m_oSideMenu {
+            sidemenu._btnMenu = sender
+            sidemenu._delegate = self
+            sidemenu.modalPresentationStyle = .overCurrentContext
+            sidemenu.transitioningDelegate = self
+            present(sidemenu, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

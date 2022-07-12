@@ -60,6 +60,10 @@
 		0C89A6A8276CFBAF0032CD8D /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C89A6A6276CFBAF0032CD8D /* NameCell.xib */; };
 		0C89A6DA276E835C0032CD8D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89A6D9276E835C0032CD8D /* CoreDataStack.swift */; };
 		0C8C020E2767930600F63AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C77A2B62766765400952A79 /* Assets.xcassets */; };
+		0C9F97D6287D7A8300C643EC /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F97D4287D7A8300C643EC /* SideMenuView.swift */; };
+		0C9F97D7287D7A8300C643EC /* SideMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9F97D5287D7A8300C643EC /* SideMenuView.xib */; };
+		0C9F97DA287D7BE400C643EC /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */; };
+		0C9F97DB287D7BE400C643EC /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */; };
 		0C9FB9F92766E1CA003FF5CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FB9F82766E1CA003FF5CD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +129,10 @@
 		0C89A6A5276CFBAF0032CD8D /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		0C89A6A6276CFBAF0032CD8D /* NameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameCell.xib; sourceTree = "<group>"; };
 		0C89A6D9276E835C0032CD8D /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		0C9F97D4287D7A8300C643EC /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		0C9F97D5287D7A8300C643EC /* SideMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuView.xib; sourceTree = "<group>"; };
+		0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
+		0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
 		0C9FB9F82766E1CA003FF5CD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +208,10 @@
 				0C76B1A7276B7F7A00C513A4 /* Encodable+Extension.swift */,
 				0C3446D82876D6B100DDC252 /* Log.swift */,
 				0C89A6D9276E835C0032CD8D /* CoreDataStack.swift */,
+				0C9F97D4287D7A8300C643EC /* SideMenuView.swift */,
+				0C9F97D5287D7A8300C643EC /* SideMenuView.xib */,
+				0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */,
+				0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */,
 				0C77A2D12766774300952A79 /* NetWork.swift */,
 				0C77A2AA2766765300952A79 /* AppDelegate.swift */,
 				0C77A2AC2766765300952A79 /* SceneDelegate.swift */,
@@ -349,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C9FB9F92766E1CA003FF5CD /* LaunchScreen.storyboard in Resources */,
+				0C9F97DB287D7BE400C643EC /* SideMenuCell.xib in Resources */,
 				0C89A6A4276CDA0E0032CD8D /* CharacterInfoView.xib in Resources */,
 				0C89A69C276CC9EE0032CD8D /* AccountListDlg.xib in Resources */,
 				0C77A2D02766773B00952A79 /* ExpensesCell.xib in Resources */,
@@ -359,6 +372,7 @@
 				0C89A6A0276CD9D00032CD8D /* CharacterCell.xib in Resources */,
 				0C4B958A276911A700F8F644 /* AddMemberDlg.xib in Resources */,
 				0C89A6A8276CFBAF0032CD8D /* NameCell.xib in Resources */,
+				0C9F97D7287D7A8300C643EC /* SideMenuView.xib in Resources */,
 				0C76B197276B7B6E00C513A4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +407,8 @@
 				0C4B9589276911A700F8F644 /* AddMemberDlg.swift in Sources */,
 				0C77A2AD2766765300952A79 /* SceneDelegate.swift in Sources */,
 				0C89A69B276CC9EE0032CD8D /* AccountListDlg.swift in Sources */,
+				0C9F97DA287D7BE400C643EC /* SideMenuCell.swift in Sources */,
+				0C9F97D6287D7A8300C643EC /* SideMenuView.swift in Sources */,
 				0C77A2CE2766773B00952A79 /* ExpensesCell.swift in Sources */,
 				0C77A2C62766772700952A79 /* Common.swift in Sources */,
 				0C89A6A7276CFBAF0032CD8D /* NameCell.swift in Sources */,
