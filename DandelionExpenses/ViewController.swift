@@ -13,10 +13,12 @@ import MessageUI
 import Messages
 import FirebaseMessaging
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,CreateViewDelegate, MFMessageComposeViewControllerDelegate,AccountListDlgDelegate , UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,CreateViewDelegate, MFMessageComposeViewControllerDelegate,AccountListDlgDelegate , UIPickerViewDelegate, UIPickerViewDataSource, SlideMenuDelegate, UIViewControllerTransitioningDelegate {
 
+    
+    
+   
+    
     @IBOutlet weak var btnTab: UIButton!
     @IBOutlet weak var m_table: UITableView!
     @IBOutlet weak var lblAmount: UILabel!
@@ -28,6 +30,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var lblInformation: UILabel!
     @IBOutlet weak var processView: UIProgressView!
     
+    let transiton = SlideInTransition()
     var datailInfo: [DeatilProfile] = []
     var m_oCreateView : CreateView!
     let db = Firestore.firestore()
@@ -62,7 +65,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 Log.d("netWorkFail")
             }
         }
-        
+        AddSideMenuButton()
         monitor.start(queue: DispatchQueue.global())
         m_oCharacterInfoView = CharacterInfoView(nibName: Common.xib_CharacterInfoView, bundle: nil)
         m_oCharacterList = CharacterList(nibName: Common.xib_CharacterList, bundle: nil)
@@ -116,7 +119,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
           UIBezierPath(rect: CGRect(x: 0, y: 11,  width: 30, height: 1)).fill()
           UIBezierPath(rect: CGRect(x: 0, y: 18, width: 30, height: 1)).fill()
           
-          defaultMenuImage = #imageLiteral(resourceName: "Profiles") //UIGraphicsGetImageFromCurrentImageContext()!
+          defaultMenuImage = #imageLiteral(resourceName: "menu") //UIGraphicsGetImageFromCurrentImageContext()!
           
           UIGraphicsEndImageContext()
           
@@ -130,11 +133,30 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if let sidemenu = m_oSideMenu {
             sidemenu._btnMenu = sender
             sidemenu._delegate = self
-            sidemenu.modalPresentationStyle = .overCurrentContext
             sidemenu.transitioningDelegate = self
+            sidemenu.modalPresentationStyle = .overCurrentContext
             present(sidemenu, animated: true, completion: nil)
         }
     }
+    
+    func SideMenuItemSelectedAtIndex(_ index: Int) {
+        let sidemenu : [String] = ["No1","No2"]
+        if index > -1 {
+            switch(sidemenu[index]){
+            case "No1":
+                print("No1")
+                break
+            case "No2":
+                print("No2")
+                break
+            default:
+                
+                break
+            }
+        }
+        
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView {
@@ -561,5 +583,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         pickerLabel?.text = nameList[row]
         return pickerLabel!
     }
-}
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+           transiton.isPresenting = true
+           return transiton
+       }
 
+       func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+           transiton.isPresenting = false
+           return transiton
+       }
+}

@@ -65,6 +65,7 @@
 		0C9F97DA287D7BE400C643EC /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */; };
 		0C9F97DB287D7BE400C643EC /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */; };
 		0C9FB9F92766E1CA003FF5CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FB9F82766E1CA003FF5CD /* LaunchScreen.storyboard */; };
+		0CE35B042880674C004874E9 /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE35B032880674C004874E9 /* SlideInTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
 		0C9FB9F82766E1CA003FF5CD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0CE35B032880674C004874E9 /* SlideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				0C9F97D5287D7A8300C643EC /* SideMenuView.xib */,
 				0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */,
 				0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */,
+				0CE35B032880674C004874E9 /* SlideInTransition.swift */,
 				0C77A2D12766774300952A79 /* NetWork.swift */,
 				0C77A2AA2766765300952A79 /* AppDelegate.swift */,
 				0C77A2AC2766765300952A79 /* SceneDelegate.swift */,
@@ -409,6 +412,7 @@
 				0C89A69B276CC9EE0032CD8D /* AccountListDlg.swift in Sources */,
 				0C9F97DA287D7BE400C643EC /* SideMenuCell.swift in Sources */,
 				0C9F97D6287D7A8300C643EC /* SideMenuView.swift in Sources */,
+				0CE35B042880674C004874E9 /* SlideInTransition.swift in Sources */,
 				0C77A2CE2766773B00952A79 /* ExpensesCell.swift in Sources */,
 				0C77A2C62766772700952A79 /* Common.swift in Sources */,
 				0C89A6A7276CFBAF0032CD8D /* NameCell.swift in Sources */,
