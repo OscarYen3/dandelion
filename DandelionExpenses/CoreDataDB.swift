@@ -169,3 +169,90 @@ func insertAccount(_ obj: AccountList) {
 //}
 
 
+//===================================================================================
+// MARK: - Group
+//===================================================================================
+
+//新增資料
+func insertObject(_ obj: GroupList) {
+    let Data = NSEntityDescription.insertNewObject(forEntityName: "GroupDB", into: viewContext) as! GroupDB
+  
+    Data.groupCode = Int32(obj.groupCode)
+    Data.whos = toJSON(obj.whos)
+    app.saveContext()
+}
+
+
+
+//刪除所有資料
+func deleteAllObject(_ fertilizerData: [GroupList] ) {
+    //刪除:將查詢到的結果刪除後，再呼叫context.save()儲存
+    let request = NSFetchRequest<GroupDB>(entityName: "GroupDB")
+    do {
+        let results = try viewContext.fetch(request)
+        for item in results {
+          viewContext.delete(item)
+        }
+        app.saveContext()
+    }catch{
+        fatalError("Failed to fetch data: \(error)")
+    }
+}
+
+//刪除資料
+func deleteObject(indexPath:IndexPath,_ groupList: [GroupList] ) {
+    //刪除:將查詢到的結果刪除後，再呼叫context.save()儲存
+    let request = NSFetchRequest<GroupDB>(entityName: "GroupDB")
+    do {
+        let results = try viewContext.fetch(request)
+        for item in results {
+            if item.groupCode == groupList[indexPath.row].groupCode {
+                viewContext.delete(item)
+            }
+        }
+        
+        app.saveContext()
+    }catch{
+        fatalError("Failed to fetch data: \(error)")
+    }
+}
+
+//更新資料
+func updateObject(_ data:GroupList) {
+    //更新:將查詢到的結果更新後，再呼叫context.save()儲存
+    let request = NSFetchRequest<GroupDB>(entityName: "GroupDB")
+    do {
+        let results = try viewContext.fetch(request)
+        for item in results {
+            if item.groupCode == data.groupCode {
+                item.whos = toJSON(data.whos)
+            }
+        }
+        app.saveContext()
+    }catch{
+        fatalError("Failed to fetch data: \(error)")
+    }
+}
+
+//查詢資料
+func selectObject() -> Array<GroupList> {
+    var array:[GroupDB] = []
+    var ConvertArray: [GroupList] = []
+    let request = NSFetchRequest<GroupDB>(entityName: "GroupDB")
+    do {
+        let results = try viewContext.fetch(request)
+        for result in results {
+            array.append(result)
+        }
+    }catch{
+        fatalError("Failed to fetch data: \(error)")
+    }
+    
+    for i in array {
+        ConvertArray.append(GroupList(i))
+    }
+    
+    ConvertArray.sort { $0.groupCode > $1.groupCode}
+    return ConvertArray
+    
+}

@@ -221,15 +221,11 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
        }
     
     
-    func addGroupList(_ profile: DeatilProfile) {
+    func addGroupList(_ group: GroupDB) {
         _ = db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"成員名單") ).addDocument(data: [
-            "name": profile.name,
-            "category": profile.category,
-            "use": profile.use,
-            "amount": profile.amount,
-            "date": profile.date,
-            "userCode": profile.userCode,
-            "whos": profile.whos,
+            "date": group.date,
+            "groupCode": group.groupCode,
+            "whos": group.whos
           ]) { (error) in
               if let error = error {
                   print(error)
@@ -237,14 +233,10 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
           }
       }
     
-    func updateGroupList(_ target: Int, _ data: DeatilProfile) {
-        db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"成員名單") ).whereField("userCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
+    func updateGroupList(_ target: Int, _ data: GroupDB) {
+        db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"成員名單") ).whereField("groupCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
                if let querySnapshot = querySnapshot {
                    let document = querySnapshot.documents.first
-                document?.reference.updateData(["name":data.name])
-                document?.reference.updateData(["category":data.category])
-                document?.reference.updateData(["use":data.use])
-                document?.reference.updateData(["amount":data.amount])
                 document?.reference.updateData(["date":data.date])
                 document?.reference.updateData(["whos": data.whos], completion: { (error) in
                    })
