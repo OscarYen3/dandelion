@@ -140,11 +140,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func SideMenuItemSelectedAtIndex(_ index: Int) {
-        let sidemenu : [String] = ["No1","No2"]
+        let sidemenu : [String] = ["聯絡我"]
         if index > -1 {
             switch(sidemenu[index]){
-            case "No1":
-                print("No1")
+            case "聯絡我":
+                UIApplication.shared.openURL(NSURL(string: "mailto:haha780205@gmail.com")! as URL)
                 break
             case "No2":
                 print("No2")

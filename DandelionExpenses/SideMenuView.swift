@@ -18,7 +18,7 @@ class SideMenuView: UIViewController,UITableViewDataSource, UITableViewDelegate 
     
     var _delegate : SlideMenuDelegate?
     var _btnMenu : UIButton!
-    var displayLabel = ["NO.1","NO.2"]
+    var displayLabel = ["聯絡我"]
     var mDataSource: [Dictionary<String, String>] = [Dictionary<String, String>]()
     override func viewDidLoad() {
         super.viewDidLoad()

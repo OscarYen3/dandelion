@@ -37,6 +37,8 @@ class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPi
     
     @IBOutlet weak var maskView: UIView!
     @IBOutlet weak var viewButton: UIStackView!
+
+    
     var _delegate:CreateViewDelegate?
     var SelectView = UIPickerView()
     let toolBar = UIToolbar()
