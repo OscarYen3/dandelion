@@ -122,9 +122,16 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
            textField.placeholder = "帳本名稱"
            
         }
+      
+        let timeInterval = Date().timeIntervalSince1970
         let okAction = UIAlertAction(title: "確定", style: .default) { [unowned controller] _ in
-            UserDefaults.Account = controller.textFields?[0].text
-            self.txtAccount.text = UserDefaults.Account
+            if controller.textFields?[0].text != "" {
+                UserDefaults.Account = (controller.textFields?[0].text ?? "") + "\(timeInterval)"
+                self.txtAccount.text = UserDefaults.Account ?? "" + "\(timeInterval)"
+            } else {
+                
+            }
+            
             
         }
         controller.addAction(okAction)
@@ -212,6 +219,40 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
                }
            }
        }
+    
+    
+    func addGroupList(_ profile: DeatilProfile) {
+        _ = db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"成員名單") ).addDocument(data: [
+            "name": profile.name,
+            "category": profile.category,
+            "use": profile.use,
+            "amount": profile.amount,
+            "date": profile.date,
+            "userCode": profile.userCode,
+            "whos": profile.whos,
+          ]) { (error) in
+              if let error = error {
+                  print(error)
+              }
+          }
+      }
+    
+    func updateGroupList(_ target: Int, _ data: DeatilProfile) {
+        db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"成員名單") ).whereField("userCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
+               if let querySnapshot = querySnapshot {
+                   let document = querySnapshot.documents.first
+                document?.reference.updateData(["name":data.name])
+                document?.reference.updateData(["category":data.category])
+                document?.reference.updateData(["use":data.use])
+                document?.reference.updateData(["amount":data.amount])
+                document?.reference.updateData(["date":data.date])
+                document?.reference.updateData(["whos": data.whos], completion: { (error) in
+                   })
+               }
+           }
+       }
+    
+    
 }
 
 
