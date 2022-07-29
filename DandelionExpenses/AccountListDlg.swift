@@ -31,11 +31,13 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     @IBOutlet weak var btnConfirm: UIButton!
     @IBOutlet weak var txtAccount: UITextField!
     @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var InputAccount: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         accountList = [ Common.collection2 , Common.collection]
         btnAdd.addTarget(self, action: #selector(addClick), for: .touchUpInside)
-        btnConfirm.addTarget(self, action: #selector(exit), for: .touchUpInside)
+        btnConfirm.addTarget(self, action: #selector(confirm), for: .touchUpInside)
 //        btnAdd.isHidden = true
         btnCancel.addTarget(self, action: #selector(exit), for: .touchUpInside)
         selectViewSet()
@@ -98,20 +100,25 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         } else {
             txtAccount.text = accountValue
         }
-        
+        self.InputAccount.text = ""
       
         self.view.endEditing(true)
         toolBar.endEditing(true)
         UserDefaults.Account = accountValue
-        
-        
     }
+    
     @objc func cancelClick() {
         self.view.endEditing(true)
         toolBar.endEditing(true)
     }
     
+   
+    @IBAction func inputClick(_ sender: Any) {
+        self.txtAccount.text = ""
+    }
+    
     @objc func addClick() {
+        self.InputAccount.text = ""
 //        let controller = UIAlertController(title: "提示", message: "尚未提供此功能", preferredStyle: .alert)
 //        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
 //        controller.addAction(okAction)
@@ -126,12 +133,10 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         let timeInterval = Date().timeIntervalSince1970
         let okAction = UIAlertAction(title: "確定", style: .default) { [unowned controller] _ in
             if controller.textFields?[0].text != "" {
-                UserDefaults.Account = (controller.textFields?[0].text ?? "") + "\(timeInterval)"
-                self.txtAccount.text = UserDefaults.Account ?? "" + "\(timeInterval)"
+                self.txtAccount.text = (controller.textFields?[0].text ?? "") + "\(timeInterval)"
             } else {
                 
             }
-            
             
         }
         controller.addAction(okAction)
@@ -141,23 +146,32 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     }
     
     @objc func exit() {
-        if  txtAccount.text == accountList[0] {
-            let array = ["option1","option2"]
-            defaults.set(array, forKey: "NameList")
-        } else  if txtAccount.text == accountList[1]  {
-            let array = NameList
-            defaults.set(array, forKey: "NameList")
+       
+        dismiss(animated: true)
+    }
+    
+    
+    @objc func confirm() {
+        let topic = UserDefaults.Account ?? ""
+        let timeInterval = Date().timeIntervalSince1970
+        if self.InputAccount.text != "" {
+            UserDefaults.Account = self.InputAccount.text ?? "" + "\(timeInterval)"
+            for i in self.accountList {
+                Messaging.messaging().unsubscribe(fromTopic: i)
+            }
+            Messaging.messaging().subscribe(toTopic: topic)
+            _delegate?.ChangeAccount()
+        } else if  self.txtAccount.text != ""{
+            UserDefaults.Account = self.txtAccount.text
+            for i in self.accountList {
+                Messaging.messaging().unsubscribe(fromTopic: i)
+            }
+            Messaging.messaging().subscribe(toTopic: topic)
+            _delegate?.ChangeAccount()
         } else {
-            let array = ["option1"]
-            defaults.set(array, forKey: "NameList")
+            
         }
         
-        let topic = UserDefaults.Account ?? ""
-        for i in self.accountList {
-            Messaging.messaging().unsubscribe(fromTopic: i)
-        }
-        Messaging.messaging().subscribe(toTopic: topic)
-        _delegate?.ChangeAccount()
         dismiss(animated: true)
     }
     

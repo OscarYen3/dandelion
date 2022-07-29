@@ -174,7 +174,7 @@ func insertAccount(_ obj: AccountList) {
 //===================================================================================
 
 //新增資料
-func insertObject(_ obj: GroupList) {
+func insertGroupObject(_ obj: GroupList) {
     let Data = NSEntityDescription.insertNewObject(forEntityName: "GroupDB", into: viewContext) as! GroupDB
   
     Data.groupCode = Int32(obj.groupCode)
@@ -185,7 +185,7 @@ func insertObject(_ obj: GroupList) {
 
 
 //刪除所有資料
-func deleteAllObject(_ fertilizerData: [GroupList] ) {
+func deleteGroupAllObject(_ fertilizerData: [GroupList] ) {
     //刪除:將查詢到的結果刪除後，再呼叫context.save()儲存
     let request = NSFetchRequest<GroupDB>(entityName: "GroupDB")
     do {
@@ -200,7 +200,7 @@ func deleteAllObject(_ fertilizerData: [GroupList] ) {
 }
 
 //刪除資料
-func deleteObject(indexPath:IndexPath,_ groupList: [GroupList] ) {
+func deleteGroupObject(indexPath:IndexPath,_ groupList: [GroupList] ) {
     //刪除:將查詢到的結果刪除後，再呼叫context.save()儲存
     let request = NSFetchRequest<GroupDB>(entityName: "GroupDB")
     do {
@@ -218,7 +218,7 @@ func deleteObject(indexPath:IndexPath,_ groupList: [GroupList] ) {
 }
 
 //更新資料
-func updateObject(_ data:GroupList) {
+func updateGroupObject(_ data:GroupList) {
     //更新:將查詢到的結果更新後，再呼叫context.save()儲存
     let request = NSFetchRequest<GroupDB>(entityName: "GroupDB")
     do {
@@ -235,7 +235,7 @@ func updateObject(_ data:GroupList) {
 }
 
 //查詢資料
-func selectObject() -> Array<GroupList> {
+func selectGroupObject() -> Array<GroupList> {
     var array:[GroupDB] = []
     var ConvertArray: [GroupList] = []
     let request = NSFetchRequest<GroupDB>(entityName: "GroupDB")
