@@ -320,6 +320,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func readData() {
+        
         db.collection(UserDefaults.Account ?? Common.collection2).getDocuments { (querySnapshot, error) in
             if let querySnapshot = querySnapshot {
                 deleteAllObject(selectObject())

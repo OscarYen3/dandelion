@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efg-39-bq9">
-                    <rect key="frame" x="41.5" y="310" width="331" height="276"/>
+                    <rect key="frame" x="41.5" y="310.5" width="331" height="275"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="輸入帳本" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBP-f9-Skb">
                             <rect key="frame" x="10" y="30" width="311" height="30"/>
@@ -32,14 +32,14 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KOz-5T-v3H">
-                            <rect key="frame" x="0.0" y="90" width="331" height="101"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KOz-5T-v3H">
+                            <rect key="frame" x="0.0" y="90" width="331" height="100"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZX-TW-4gy">
-                                    <rect key="frame" x="0.0" y="0.0" width="331" height="46"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="331" height="45"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="選擇帳本" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyl-oU-dsA">
-                                            <rect key="frame" x="20" y="0.5" width="231" height="45"/>
+                                            <rect key="frame" x="20" y="0.0" width="231" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="CK1-eP-Ajv"/>
                                             </constraints>
@@ -47,7 +47,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlX-pO-D3b">
-                                            <rect key="frame" x="261" y="7.5" width="50" height="31"/>
+                                            <rect key="frame" x="261" y="7" width="50" height="31"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="nNh-K2-NX0"/>
                                             </constraints>
@@ -66,7 +66,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpY-Z6-dXm">
-                                    <rect key="frame" x="0.0" y="56" width="331" height="45"/>
+                                    <rect key="frame" x="0.0" y="55" width="331" height="45"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入帳本" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjt-5G-BhQ">
                                             <rect key="frame" x="20" y="0.0" width="231" height="45"/>
@@ -92,7 +92,7 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0fG-Uz-HMb">
-                            <rect key="frame" x="0.0" y="231" width="331" height="45"/>
+                            <rect key="frame" x="0.0" y="230" width="331" height="45"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoN-8L-1hv" userLabel="取消">
                                     <rect key="frame" x="0.0" y="0.0" width="165.5" height="45"/>

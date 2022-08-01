@@ -44,6 +44,8 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     }
     
     func selectViewSet() {
+        txtAccount.text = ""
+        InputAccount.text = ""
         SelectView = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
         SelectView.delegate = self
         SelectView.dataSource = self
@@ -155,18 +157,13 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         let topic = UserDefaults.Account ?? ""
         let timeInterval = Date().timeIntervalSince1970
         if self.InputAccount.text != "" {
-            UserDefaults.Account = self.InputAccount.text ?? "" + "\(timeInterval)"
-            for i in self.accountList {
-                Messaging.messaging().unsubscribe(fromTopic: i)
-            }
-            Messaging.messaging().subscribe(toTopic: topic)
+            UserDefaults.Account =  self.InputAccount.text
+//            UserDefaults.Account = String(format: "%@%@",self.InputAccount.text ?? "","\(Int(timeInterval))") 
+            Messaging.messaging().subscribe(toTopic: UserDefaults.Account ?? "")
             _delegate?.ChangeAccount()
         } else if  self.txtAccount.text != ""{
             UserDefaults.Account = self.txtAccount.text
-            for i in self.accountList {
-                Messaging.messaging().unsubscribe(fromTopic: i)
-            }
-            Messaging.messaging().subscribe(toTopic: topic)
+            Messaging.messaging().subscribe(toTopic: UserDefaults.Account ?? "")
             _delegate?.ChangeAccount()
         } else {
             
