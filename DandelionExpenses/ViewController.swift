@@ -13,11 +13,10 @@ import MessageUI
 import Messages
 import FirebaseMessaging
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,CreateViewDelegate, MFMessageComposeViewControllerDelegate,AccountListDlgDelegate , UIPickerViewDelegate, UIPickerViewDataSource, SlideMenuDelegate, UIViewControllerTransitioningDelegate {
-
-    
-    
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,CreateViewDelegate, MFMessageComposeViewControllerDelegate,AccountListDlgDelegate , UIPickerViewDelegate, UIPickerViewDataSource, SlideMenuDelegate, UIViewControllerTransitioningDelegate,CharacterListDelegate {
    
+    
+
     
     @IBOutlet weak var btnTab: UIButton!
     @IBOutlet weak var m_table: UITableView!
@@ -298,8 +297,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             oView.characterList = nameList
             oView.datailInfo = datailInfo
             oView.navigationItem.title = "人員列表"
+            oView._delegate = self
             self.navigationItem.backButtonTitle = ""
-            
             self.navigationController?.pushViewController(oView, animated: true)
         }
     }
@@ -345,6 +344,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.m_table.reloadData()
             self.amountCheck()
         }
+        
         if !netWork {
             let controller = UIAlertController(title: "請檢查網路", message: "沒有網路不能更新最新資料" , preferredStyle: .alert)
             let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
@@ -628,4 +628,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
            transiton.isPresenting = false
            return transiton
        }
+    
+    func ReloadMemberList() {
+        readData()
+        if let oView = m_oCharacterList {
+            oView.debt = self.debt
+            oView.characterList = nameList
+            oView.datailInfo = datailInfo
+        }
+    }
 }

@@ -15,11 +15,6 @@ protocol CreateViewDelegate {
     func SaveDetail(detailProfile: DeatilProfile)
     func EditDetail(detailProfile: DeatilProfile)
 }
-enum UserType {
-case create
-case edit
-case infomation
-}
 
 class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,AddMemberDlgDlgDelegate, UICollectionViewDelegate,SelectedCollectionItemDelegate  {
 

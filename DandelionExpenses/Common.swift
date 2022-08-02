@@ -31,6 +31,12 @@ let monitor = NWPathMonitor()
 var netWork: Bool = false
 let defaults = UserDefaults.standard
 
+enum UserType {
+case create
+case edit
+case infomation
+}
+
 //var NameList:[String] =
 //["熊","潘",
 // "婕","毛","楊",

@@ -23,6 +23,7 @@ var memberArray:[Any] = []
 class AddMemberDlg: UIViewController {
     
     @IBOutlet weak var txtName: UITextField!
+    
     var _delegate : AddMemberDlgDlgDelegate?
     let db = Firestore.firestore()
     var groupInfo: GroupList = GroupList()
