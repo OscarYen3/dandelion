@@ -25,6 +25,8 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     var accountValue: String = ""
     var _delegate:AccountListDlgDelegate?
     let db = Firestore.firestore()
+    var groupListInfo: GroupList = GroupList()
+    var groupList: [GroupList] = []
     
 
     @IBOutlet weak var btnAdd: UIButton!
@@ -135,7 +137,12 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         let timeInterval = Date().timeIntervalSince1970
         let okAction = UIAlertAction(title: "確定", style: .default) { [unowned controller] _ in
             if controller.textFields?[0].text != "" {
-                self.txtAccount.text = (controller.textFields?[0].text ?? "") + "\(timeInterval)"
+                self.InputAccount.text = (controller.textFields?[0].text ?? "") + "\(Int(timeInterval))"
+                self.groupListInfo.date = Date()
+                self.groupListInfo.whos = ["PasserbyNo.1"]
+                self.groupListInfo.groupCode = Int((Int32(timeInterval)))
+                defaults.set(self.groupListInfo.whos, forKey: "NameList")
+                self.addGroupList(self.groupListInfo)
             } else {
                 
             }
@@ -154,22 +161,26 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     
     
     @objc func confirm() {
-        let topic = UserDefaults.Account ?? ""
-        let timeInterval = Date().timeIntervalSince1970
+        
+        
+        //        _ = UserDefaults.Account ?? ""
+        //        _ = Date().timeIntervalSince1970
         if self.InputAccount.text != "" {
             UserDefaults.Account =  self.InputAccount.text
 //            UserDefaults.Account = String(format: "%@%@",self.InputAccount.text ?? "","\(Int(timeInterval))") 
             Messaging.messaging().subscribe(toTopic: UserDefaults.Account ?? "")
             _delegate?.ChangeAccount()
-        } else if  self.txtAccount.text != ""{
+            dismiss(animated: true)
+        } else if self.txtAccount.text != ""{
             UserDefaults.Account = self.txtAccount.text
             Messaging.messaging().subscribe(toTopic: UserDefaults.Account ?? "")
             _delegate?.ChangeAccount()
+            dismiss(animated: true)
         } else {
-            
+            self.view.showToast(toastMessage: "選項不能為空", duration: 2)
         }
         
-        dismiss(animated: true)
+       
     }
     
     //07/04 還用不到
@@ -232,9 +243,9 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
        }
     
     
-    func addGroupList(_ group: GroupDB) {
-        _ = db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"成員名單") ).addDocument(data: [
-            "date": group.date,
+    func addGroupList(_ group: GroupList) {
+        _ = db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Group") ).addDocument(data: [
+            "date": group.date ,
             "groupCode": group.groupCode,
             "whos": group.whos
           ]) { (error) in
@@ -244,17 +255,50 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
           }
       }
     
-    func updateGroupList(_ target: Int, _ data: GroupDB) {
-        db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"成員名單") ).whereField("groupCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
+    func updateGroupList(_ target: Int, _ data: GroupList) {
+        db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Group") ).whereField("groupCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
                if let querySnapshot = querySnapshot {
                    let document = querySnapshot.documents.first
-                document?.reference.updateData(["date":data.date])
-                document?.reference.updateData(["whos": data.whos], completion: { (error) in
+                   document?.reference.updateData(["date":data.date ])
+                   document?.reference.updateData(["whos": data.whos ], completion: { (error) in
                    })
                }
            }
        }
     
+    
+    @IBAction func shareClick(_ sender: Any) {
+        if InputAccount.text == "" {
+            self.view.showToast(toastMessage: "帳本不能為空", duration: 2)
+        } else {
+            self.shareAccount()
+        }
+        
+    }
+    
+    
+    func shareAccount() {
+      
+        let newdisplay = InputAccount.text
+        let activityVC = UIActivityViewController(activityItems: [newdisplay ?? ""], applicationActivities: nil)
+
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if error != nil {
+                self.view.showToast(toastMessage: "OMG!!!失敗了啦！！", duration: 2)
+                return
+            }
+            if completed {
+                self.view.showToast(toastMessage: "成功分享", duration: 2)
+            }
+        }
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            var popoverController : UIPopoverPresentationController!
+            popoverController = activityVC.popoverPresentationController
+            popoverController.sourceView = self.view
+            popoverController.permittedArrowDirections = UIPopoverArrowDirection()
+        }
+        self.present(activityVC, animated: true, completion: nil)
+    }
     
 }
 

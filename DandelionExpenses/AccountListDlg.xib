@@ -38,7 +38,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZX-TW-4gy">
                                     <rect key="frame" x="0.0" y="0.0" width="331" height="45"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="選擇帳本" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyl-oU-dsA">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="預設帳本" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyl-oU-dsA">
                                             <rect key="frame" x="20" y="0.0" width="231" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="CK1-eP-Ajv"/>
@@ -69,25 +69,39 @@
                                     <rect key="frame" x="0.0" y="55" width="331" height="45"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入帳本" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjt-5G-BhQ">
-                                            <rect key="frame" x="20" y="0.0" width="231" height="45"/>
+                                            <rect key="frame" x="20" y="0.0" width="185" height="45"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
                                                 <action selector="inputClick:" destination="-1" eventType="valueChanged" id="HYW-OX-jlI"/>
                                             </connections>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPL-5v-p5i">
+                                            <rect key="frame" x="215" y="0.0" width="106" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="9c9-Ug-9r0"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="分享帳本"/>
+                                            <connections>
+                                                <action selector="shareClick:" destination="-1" eventType="touchUpInside" id="dDF-Q3-4p3"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="tjt-5G-BhQ" firstAttribute="leading" secondItem="rpY-Z6-dXm" secondAttribute="leading" constant="20" id="32w-TI-K6t"/>
+                                        <constraint firstAttribute="trailing" secondItem="VPL-5v-p5i" secondAttribute="trailing" constant="10" id="Afm-fL-w1J"/>
+                                        <constraint firstItem="VPL-5v-p5i" firstAttribute="leading" secondItem="tjt-5G-BhQ" secondAttribute="trailing" constant="10" id="EIv-ld-go8"/>
                                         <constraint firstItem="tjt-5G-BhQ" firstAttribute="top" secondItem="rpY-Z6-dXm" secondAttribute="top" id="KpV-Uj-StB"/>
                                         <constraint firstAttribute="bottom" secondItem="tjt-5G-BhQ" secondAttribute="bottom" id="iqG-BV-Y7J"/>
                                         <constraint firstItem="tjt-5G-BhQ" firstAttribute="centerY" secondItem="rpY-Z6-dXm" secondAttribute="centerY" id="y1f-gt-3QC"/>
+                                        <constraint firstItem="VPL-5v-p5i" firstAttribute="centerY" secondItem="rpY-Z6-dXm" secondAttribute="centerY" id="yRY-p3-mFg"/>
                                     </constraints>
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="tjt-5G-BhQ" firstAttribute="width" secondItem="fyl-oU-dsA" secondAttribute="width" id="FDE-w1-4sk"/>
+                                <constraint firstItem="tjt-5G-BhQ" firstAttribute="width" secondItem="fyl-oU-dsA" secondAttribute="width" multiplier="0.8" id="FDE-w1-4sk"/>
                                 <constraint firstItem="tjt-5G-BhQ" firstAttribute="height" secondItem="fyl-oU-dsA" secondAttribute="height" id="HSC-hp-xEe"/>
                             </constraints>
                         </stackView>

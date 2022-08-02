@@ -66,6 +66,8 @@
 		0C9F97DA287D7BE400C643EC /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */; };
 		0C9F97DB287D7BE400C643EC /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */; };
 		0C9FB9F92766E1CA003FF5CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FB9F82766E1CA003FF5CD /* LaunchScreen.storyboard */; };
+		0CC99C612898D84E005C84D1 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC99C5F2898D84E005C84D1 /* UILabel+Extension.swift */; };
+		0CC99C622898D84E005C84D1 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC99C602898D84E005C84D1 /* UIView+Extension.swift */; };
 		0CE35B042880674C004874E9 /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE35B032880674C004874E9 /* SlideInTransition.swift */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +139,8 @@
 		0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
 		0C9FB9F82766E1CA003FF5CD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0CC99C5F2898D84E005C84D1 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		0CC99C602898D84E005C84D1 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		0CE35B032880674C004874E9 /* SlideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				0C3446BF2876C1AE00DDC252 /* DandelionExpenses.entitlements */,
+				0CC99C5F2898D84E005C84D1 /* UILabel+Extension.swift */,
+				0CC99C602898D84E005C84D1 /* UIView+Extension.swift */,
 				0C76B1A7276B7F7A00C513A4 /* Encodable+Extension.swift */,
 				0C3446D82876D6B100DDC252 /* Log.swift */,
 				0C89A6D9276E835C0032CD8D /* CoreDataStack.swift */,
@@ -412,9 +418,11 @@
 				0C76B1A8276B7F7A00C513A4 /* Encodable+Extension.swift in Sources */,
 				0C4B9589276911A700F8F644 /* AddMemberDlg.swift in Sources */,
 				0C77A2AD2766765300952A79 /* SceneDelegate.swift in Sources */,
+				0CC99C622898D84E005C84D1 /* UIView+Extension.swift in Sources */,
 				0C89A69B276CC9EE0032CD8D /* AccountListDlg.swift in Sources */,
 				0C9F97DA287D7BE400C643EC /* SideMenuCell.swift in Sources */,
 				0C9F97D6287D7A8300C643EC /* SideMenuView.swift in Sources */,
+				0CC99C612898D84E005C84D1 /* UILabel+Extension.swift in Sources */,
 				0CE35B042880674C004874E9 /* SlideInTransition.swift in Sources */,
 				0C77A2CE2766773B00952A79 /* ExpensesCell.swift in Sources */,
 				0C95CE0E2893CA9800884862 /* GroupList.swift in Sources */,

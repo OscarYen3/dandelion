@@ -6,14 +6,22 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+import Network
+import MessageUI
+import Messages
+import FirebaseMessaging
 
 class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var characterList : [String] = []
     var datailInfo: [DeatilProfile] = []
+    var groupInfo: GroupList = GroupList()
     var m_oCharacterInfoView: CharacterInfoView?
     var nameList: [String] = []
     var debt: Int = 0
+    let db = Firestore.firestore()
     
     @IBOutlet weak var m_table: UITableView!
     
@@ -64,7 +72,10 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource 
                defaults.set(memberArray, forKey: "NameList")
                self.characterList.remove(at: indexPath.row)
                self.m_table.reloadData()
-              
+               self.groupInfo.whos = memberArray as? [String] ?? []
+               self.groupInfo.date = Date()
+               let target: Int = Int(UserDefaults.GroupCode ?? "") ?? 0
+               self.updateGroupList(target, self.groupInfo)
            }
            controller.addAction(okAction)
            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -93,5 +104,16 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource 
         }
         return String(amount)
     }
+    
+    func updateGroupList(_ target: Int, _ data: GroupList) {
+        db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Group") ).whereField("groupCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
+               if let querySnapshot = querySnapshot {
+                   let document = querySnapshot.documents.first
+                   document?.reference.updateData(["date":data.date ])
+                   document?.reference.updateData(["whos": data.whos ], completion: { (error) in
+                   })
+               }
+           }
+       }
 
 }

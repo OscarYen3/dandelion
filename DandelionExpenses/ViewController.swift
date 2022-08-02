@@ -32,6 +32,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     let transiton = SlideInTransition()
     var datailInfo: [DeatilProfile] = []
+    var groupListInfo: [GroupList] = []
     var m_oCreateView : CreateView!
     let db = Firestore.firestore()
     var m_oAccountDlg : AccountListDlg?
@@ -294,7 +295,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if let oView = m_oCharacterList {
             oView.debt = self.debt
             nameList = (defaults.array(forKey: "NameList") ?? []) as? [String] ?? []
-            oView.characterList = nameList as? [String] ?? []
+            oView.characterList = nameList
             oView.datailInfo = datailInfo
             oView.navigationItem.title = "人員列表"
             self.navigationItem.backButtonTitle = ""
@@ -328,6 +329,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     print(document.data())
                     self.dataConvert(target: document)
                 }
+                
+                self.db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Group") ).getDocuments { (querySnapshot, error) in
+                    if let querySnapshot = querySnapshot {
+                        deleteGroupAllObject(selectGroupObject())
+                        for document in querySnapshot.documents {
+                            print(document.data())
+                            self.groupConvert(target: document)
+                        }
+                    }
+                }
+                
             }
             self.datailInfo = selectObject()
             self.m_table.reloadData()
@@ -341,6 +353,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         
     }
+        
     
     func dataConvert(target: QueryDocumentSnapshot){
         let data: DeatilProfile = DeatilProfile()
@@ -367,8 +380,29 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         insertObject(DeatilProfile(data))
         
     }
-    
-    func deleteDocument(_ target: String?) {
+        
+        func groupConvert(target: QueryDocumentSnapshot){
+            let data: GroupList = GroupList()
+            for i in target.data() {
+                switch i.key {
+                case "groupCode":
+                    data.groupCode = i.value as! Int
+                case "whos":
+                    data.whos = i.value as! [String]
+                default:
+                    break
+                }
+                
+            }
+            data.groupId = target.documentID
+            insertGroupObject(GroupList(data))
+            memberArray = data.whos
+            defaults.set(memberArray, forKey: "NameList")
+            UserDefaults.GroupCode =  String(data.groupCode)
+        }
+     
+        
+        func deleteDocument(_ target: String?) {
         guard let newTarget = target else { return }
         db.collection(UserDefaults.Account ?? Common.collection2).document(newTarget).delete() { err   in
                 if let err = err {

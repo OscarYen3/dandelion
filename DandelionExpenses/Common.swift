@@ -31,16 +31,16 @@ let monitor = NWPathMonitor()
 var netWork: Bool = false
 let defaults = UserDefaults.standard
 
-var NameList:[String] =
-["熊","潘",
- "婕","毛","楊",
- "佳","Cola",
- "轟","禿",
- "帥","良",
- "宣","凃",
- "文","Mo",
- "圓","Nick",
- "雯","Billy",]
+//var NameList:[String] =
+//["熊","潘",
+// "婕","毛","楊",
+// "佳","Cola",
+// "轟","禿",
+// "帥","良",
+// "宣","凃",
+// "文","Mo",
+// "圓","Nick",
+// "雯","Billy",]
 
 func rotateToPotrait() {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -56,6 +56,7 @@ extension UserDefaults {
     private enum Key : String {
         case Account = "Account"
         case Accounts = "Accounts"
+        case GroupCode = "GroupCode"
     }
     
     static var Account: String? {
@@ -85,6 +86,21 @@ extension UserDefaults {
                 return
             }
             defs.removeObject(forKey: Key.Accounts.rawValue)
+        }
+    }
+    
+    static var GroupCode: String? {
+        get {
+            let defs = UserDefaults.standard
+            return defs.string(forKey: Key.GroupCode.rawValue)
+        }
+        set(value) {
+            let defs = UserDefaults.standard
+            if let value = value {
+                defs.set(value, forKey: Key.GroupCode.rawValue)
+                return
+            }
+            defs.removeObject(forKey: Key.GroupCode.rawValue)
         }
     }
     

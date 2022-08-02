@@ -16,6 +16,7 @@ class SideMenuView: UIViewController,UITableViewDataSource, UITableViewDelegate 
     @IBOutlet weak var _tblMenu: UITableView!
     @IBOutlet weak var _btnCloseMenu: UIButton!
     
+    @IBOutlet weak var lblAccount: UILabel!
     var _delegate : SlideMenuDelegate?
     var _btnMenu : UIButton!
     var displayLabel = ["聯絡我"]
@@ -28,6 +29,10 @@ class SideMenuView: UIViewController,UITableViewDataSource, UITableViewDelegate 
         _tblMenu.tableFooterView = UIView()
         _btnCloseMenu.addTarget(self, action: #selector(OnCloseMenuClicked), for: .touchUpInside)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        lblAccount.text = UserDefaults.Account
     }
     
     @objc func OnCloseMenuClicked() {
