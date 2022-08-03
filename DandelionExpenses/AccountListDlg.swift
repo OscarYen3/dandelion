@@ -142,7 +142,7 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
                 self.groupListInfo.whos = ["PasserbyNo.1"]
                 self.groupListInfo.groupCode = Int((Int32(timeInterval)))
                 defaults.set(self.groupListInfo.whos, forKey: "NameList")
-                self.addGroupList(self.groupListInfo)
+                self.addGroupList(self.groupListInfo, self.InputAccount.text ?? "")
             } else {
                 
             }
@@ -243,7 +243,8 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
        }
     
     
-    func addGroupList(_ group: GroupList) {
+    func addGroupList(_ group: GroupList,_ groupName: String) {
+        UserDefaults.Account = groupName
         _ = db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Group") ).addDocument(data: [
             "date": group.date ,
             "groupCode": group.groupCode,
