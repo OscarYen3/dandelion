@@ -280,8 +280,8 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     
     func shareAccount() {
       
-        let newdisplay = InputAccount.text
-        let activityVC = UIActivityViewController(activityItems: [newdisplay ?? ""], applicationActivities: nil)
+        let newdisplay = String(format: "%@%@", "This is my Account Name: ",InputAccount.text ?? "")
+        let activityVC = UIActivityViewController(activityItems: [newdisplay], applicationActivities: nil)
 
         activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             if error != nil {

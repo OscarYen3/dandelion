@@ -400,6 +400,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             insertGroupObject(GroupList(data))
             memberArray = data.whos
             defaults.set(memberArray, forKey: "NameList")
+            self.nameList = (defaults.array(forKey: "NameList") ?? []) as? [String] ?? []
             UserDefaults.GroupCode =  String(data.groupCode)
         }
      
@@ -632,11 +633,42 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
        }
     
     func ReloadMemberList() {
-        readData()
-        if let oView = m_oCharacterList {
-            oView.debt = self.debt
-            oView.characterList = nameList
-            oView.datailInfo = datailInfo
+        if UserDefaults.Account == "" {
+            UserDefaults.Account = Common.collection2
+        }
+        db.collection(UserDefaults.Account ?? Common.collection2).getDocuments { (querySnapshot, error) in
+            if let querySnapshot = querySnapshot {
+                deleteAllObject(selectObject())
+                for document in querySnapshot.documents {
+                    print(document.data())
+                    self.dataConvert(target: document)
+                }
+                
+                self.db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Group") ).getDocuments { (querySnapshot, error) in
+                    if let querySnapshot = querySnapshot {
+                        deleteGroupAllObject(selectGroupObject())
+                        for document in querySnapshot.documents {
+                            print(document.data())
+                            self.groupConvert(target: document)
+                        }
+                        if let oView = self.m_oCharacterList {
+                            oView.characterList = self.nameList
+                            oView.nameList  = self.nameList
+                            oView.m_table.reloadData()
+                        }
+                    }
+                }
+                
+            }
+            self.datailInfo = selectObject()
+            self.amountCheck()
+        }
+        
+        if !netWork {
+            let controller = UIAlertController(title: "請檢查網路", message: "沒有網路不能更新最新資料" , preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+            controller.addAction(okAction)
+            present(controller, animated: true, completion: nil)
         }
     }
 }
