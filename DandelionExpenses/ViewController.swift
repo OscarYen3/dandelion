@@ -594,7 +594,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         } else {
             txtName.text = nameValue
         }
+        
         processView.progress = (Float(sumAmount(txtName.text ?? "")) ?? 0) / Float(debt)
+        if (Float(sumAmount(txtName.text ?? "")) ?? 0) >= 0 {
+            processView.progress = 0 / 1
+        }
         lblInformation.text = sumAmount(txtName.text ?? "")
         processView.isHidden = false
         lblInformation.isHidden = false

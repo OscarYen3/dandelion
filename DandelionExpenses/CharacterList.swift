@@ -61,6 +61,10 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource,
         cell.lblName.text = characterList[indexPath.row]
         cell.lblAmount.text = sumAmount(nameList[indexPath.row] )
         cell.processView.progress = (Float(sumAmount(nameList[indexPath.row] )) ?? 0) / Float(debt)
+        
+        if (Float(sumAmount(nameList[indexPath.row] )) ?? 0) >= 0 {
+            cell.processView.progress  = 0 / 1
+        }
         return cell
     }
     
@@ -80,7 +84,7 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource,
         if editingStyle == .delete {
             let controller = UIAlertController(title: "提醒", message: "確定刪除？", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "是的", style: .default) { _ in
-                if self.checkName(self.characterList[indexPath.row]) {
+                if self.checkName(self.characterList[indexPath.row],self.sumAmount(self.nameList[indexPath.row] )) {
                     self.UIShowHaveDebt(true)
                 } else {
                     memberArray = defaults.array(forKey: "NameList") ?? []
@@ -201,11 +205,13 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource,
         UIShowHaveDebt(false)
     }
     
-    func checkName(_ target: String) -> Bool {
+    func checkName(_ target: String, _ amountValue: String) -> Bool {
         var verify: Bool = false
         for i in datailInfo {
             for name in i.whos {
-                if name == target {
+                if name == target && amountValue == "0" {
+                    verify = false
+                } else {
                     verify = true
                 }
             }
