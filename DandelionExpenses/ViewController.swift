@@ -88,7 +88,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.navigationItem.title = "蒲工英共同帳本"
         nameList = (defaults.array(forKey: "NameList") ?? []) as? [String] ?? []
         m_table.reloadData()
-        m_table2.reloadData()
+//        m_table2.reloadData()
         
         if txtName.text == "" {
             processView.isHidden = true
@@ -197,20 +197,20 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             return cell
         case m_table2:
             let cell = tableView.dequeueReusableCell(withIdentifier: Common.xib_CharacterCell, for: indexPath) as! CharacterCell
-            var negativenumber: Int = 0
-            cell.selectionStyle = .none
-            if indexPath.row > nameList.count {
-                
-            } else {
+//            var negativenumber: Int = 0
+//            cell.selectionStyle = .none
+//            if indexPath.row > nameList.count {
+//
+//            } else {
 //                cell.lblName.text = (nameList[indexPath.row] )
 //                cell.lblAmount.text = String(sumAmount2(nameList[indexPath.row] ))
-                negativenumber = sumAmount2(nameList[indexPath.row] )
-                if negativenumber < 0 {
-                    debt += negativenumber
-                }
-            }
-            
-            lblDebt.text =  String(format: "%d" , debt)
+//                negativenumber = sumAmount2(nameList[indexPath.row] )
+//                if negativenumber < 0 {
+//                    debt += negativenumber
+//                }
+//            }
+//
+//            lblDebt.text =  String(format: "%d" , debt)
             
             return cell
         default:
@@ -324,7 +324,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         lblAmount.text = String(amount)
         debt = 0
-        m_table2.reloadData()
+        debtCheck()
+//        m_table2.reloadData()
     }
     
     func readData() {
@@ -761,6 +762,21 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 }
             }
         }
+    
+    func debtCheck() {
+        var negativenumber = 0
+        for i in nameList {
+            negativenumber = sumAmount2(i)
+            if negativenumber < 0 {
+                debt += negativenumber
+            }
+        }
+        
+        lblDebt.text =  String(format: "%d" , debt)
+    }
+    
+    
+    
     
     
 }
