@@ -45,6 +45,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var nameValue: String = ""
     var m_oSideMenu : SideMenuView?
     var m_oVersionUpdateDlg : VersionUpdateDlg?
+    var groupInfo: GroupList = GroupList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -337,19 +338,20 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     print(document.data())
                     self.dataConvert(target: document)
                 }
-                
+                self.datailInfo = selectObject()
                 self.db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Group") ).getDocuments { (querySnapshot, error) in
                     if let querySnapshot = querySnapshot {
                         deleteGroupAllObject(selectGroupObject())
                         for document in querySnapshot.documents {
                             print(document.data())
-                            self.groupConvert(target: document)
+                            
+                            self.groupConvert(target: document,  who: self.getAllName(self.datailInfo))
                         }
                     }
                 }
                 
             }
-            self.datailInfo = selectObject()
+            
             self.m_table.reloadData()
             self.amountCheck()
         }
@@ -390,7 +392,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
         
-        func groupConvert(target: QueryDocumentSnapshot){
+    func groupConvert(target: QueryDocumentSnapshot,who:[String]){
             let data: GroupList = GroupList()
             for i in target.data() {
                 switch i.key {
@@ -403,13 +405,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 }
                 
             }
-            data.groupId = target.documentID
-            insertGroupObject(GroupList(data))
-            memberArray = data.whos
-            defaults.set(memberArray, forKey: "NameList")
-            self.nameList = (defaults.array(forKey: "NameList") ?? []) as? [String] ?? []
-            UserDefaults.GroupCode =  String(data.groupCode)
+        data.groupId = target.documentID
+        insertGroupObject(GroupList(data))
+        memberArray = data.whos
+        for i in who {
+            memberArray.append(i)
         }
+        let memberList: [String] = memberArray as? [String] ?? []
+        defaults.set(memberList.removeDuplicateElement(), forKey: "NameList")
+        self.nameList = (defaults.array(forKey: "NameList") ?? []) as? [String] ?? []
+        UserDefaults.GroupCode =  String(data.groupCode)
+        updateNameList()
+    }
      
         
         func deleteDocument(_ target: String?) {
@@ -652,12 +659,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     self.dataConvert(target: document)
                 }
                 
+                self.datailInfo = selectObject()
                 self.db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Group") ).getDocuments { (querySnapshot, error) in
                     if let querySnapshot = querySnapshot {
                         deleteGroupAllObject(selectGroupObject())
                         for document in querySnapshot.documents {
                             print(document.data())
-                            self.groupConvert(target: document)
+                            self.groupConvert(target: document, who: self.getAllName(self.datailInfo))
                         }
                         if let oView = self.m_oCharacterList {
                             oView.characterList = self.nameList
@@ -668,7 +676,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 }
                 
             }
-            self.datailInfo = selectObject()
+            
             self.amountCheck()
         }
         
@@ -724,4 +732,48 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             }
         }
     }
+    
+    func getAllName(_ data: [DeatilProfile]) -> [String] {
+        var allname:[String] = []
+        for i in data {
+            for who in i.whos {
+                allname.append(who)
+            }
+        }
+        return allname.removeDuplicateElement()
+    }
+    
+
+    func updateNameList() {
+        self.groupInfo.whos = memberArray as? [String] ?? []
+        self.groupInfo.date = Date()
+        let target: Int = Int(UserDefaults.GroupCode ?? "") ?? 0
+        self.updateGroupList(target, self.groupInfo)
+    }
+    
+    func updateGroupList(_ target: Int, _ data: GroupList) {
+            db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Group") ).whereField("groupCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
+                if let querySnapshot = querySnapshot {
+                    let document = querySnapshot.documents.first
+                    document?.reference.updateData(["date":data.date ])
+                    document?.reference.updateData(["whos": data.whos ], completion: { (error) in
+                    })
+                }
+            }
+        }
+    
+    
+}
+
+extension Array where Element: Hashable {
+    
+    func removeDuplicateElement() -> [Element] {
+        var elementSet = Set<String>()
+
+        return filter {
+            elementSet.update(with: $0 as! String) == nil
+        }
+    }
+    
+    
 }

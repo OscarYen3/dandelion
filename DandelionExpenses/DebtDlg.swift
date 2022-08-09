@@ -20,7 +20,7 @@ class DebtDlg: UIViewController {
     }
 
     @IBAction func cancelClcik(_ sender: Any) {
-        _delegate?.OnCancel()
+        _delegate?.DebtOnOk()
     }
 
 }
