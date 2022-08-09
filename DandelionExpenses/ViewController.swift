@@ -714,15 +714,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
            }
        }
 
-
-          func UIShowVersionUpdateDlg() {
-           if let oView = m_oVersionUpdateDlg {
-               DispatchQueue.main.async {
-                   oView.modalPresentationStyle = .fullScreen
-                   oView.modalPresentationStyle = .custom
-                   oView.view.backgroundColor = UIColor.MyColor_Black()
-                   self.present(oView, animated: true, completion: nil)
-               }
-           }
-       }
+    func UIShowVersionUpdateDlg() {
+        if let oView = m_oVersionUpdateDlg {
+            DispatchQueue.main.async {
+                oView.modalPresentationStyle = .fullScreen
+                oView.modalPresentationStyle = .custom
+                oView.view.backgroundColor = UIColor.init(red: 4/255.0, green: 4/255.0, blue: 15/255.0, alpha: 0.75)
+                self.present(oView, animated: true, completion: nil)
+            }
+        }
+    }
 }

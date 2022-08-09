@@ -18,9 +18,9 @@ class VersionUpdateDlg: UIViewController {
         
         btnOk.addTarget(self, action: #selector(ok), for: .touchUpInside)
         btnOk.layer.cornerRadius = btnOk.frame.height / 2
-        lblTitile.text = "update_app_apple_store"
-        btnOk.setTitle("ok", for: .normal)
-        lbltitle.text = "update_app"
+        lblTitile.text = "Apple Store 更新"
+        btnOk.setTitle("確定", for: .normal)
+        lbltitle.text = "有新版本要升級"
     }
     
     @objc func ok() {

@@ -12,17 +12,18 @@ import UIKit
 
 class Common {
     
-    static let xib_CreateView       = "CreateView"
-    static let xib_ExpensesCell     =  "ExpensesCell"
-    static let xib_CharacterCell    =  "CharacterCell"
-    static let xib_NameCell         =  "NameCell"
-    static let xib_AddMemberDlg     =  "AddMemberDlg"
-    static let xib_AccountListDlg   =  "AccountListDlg"
-    static let xib_CharacterList   =  "CharacterList"
+    static let xib_CreateView          = "CreateView"
+    static let xib_ExpensesCell        =  "ExpensesCell"
+    static let xib_CharacterCell       =  "CharacterCell"
+    static let xib_NameCell            =  "NameCell"
+    static let xib_AddMemberDlg        =  "AddMemberDlg"
+    static let xib_DebtDlg             =  "DebtDlg"
+    static let xib_AccountListDlg      =  "AccountListDlg"
+    static let xib_CharacterList       =  "CharacterList"
     static let xib_CharacterInfoView   =  "CharacterInfoView"
-
-    static let collection           = "Dandelion"
-    static let collection2          = "Public"
+    static let xib_VersionUpdateDlg    = "VersionUpdateDlg"
+    static let collection              = "Dandelion"
+    static let collection2             = "Public"
 }
 
 let app = UIApplication.shared.delegate as! AppDelegate

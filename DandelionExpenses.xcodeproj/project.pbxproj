@@ -17,6 +17,8 @@
 		0C754FA128A1FFF200A9F5A1 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C754FA028A1FFF200A9F5A1 /* Bundle+Extension.swift */; };
 		0C754FA428A201A800A9F5A1 /* VersionUpdateDlg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */; };
 		0C754FA528A201A800A9F5A1 /* VersionUpdateDlg.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C754FA328A201A800A9F5A1 /* VersionUpdateDlg.xib */; };
+		0C754FB028A2190700A9F5A1 /* DebtDlg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C754FAE28A2190700A9F5A1 /* DebtDlg.swift */; };
+		0C754FB128A2190700A9F5A1 /* DebtDlg.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C754FAF28A2190700A9F5A1 /* DebtDlg.xib */; };
 		0C769FA327679C3C0012BD99 /* CoreDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C769FA227679C3C0012BD99 /* CoreDataDB.swift */; };
 		0C769FA42767A5030012BD99 /* DandelionExpensesDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C77A2B32766765300952A79 /* DandelionExpensesDB.xcdatamodeld */; };
 		0C76B197276B7B6E00C513A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C76B196276B7B6E00C513A4 /* GoogleService-Info.plist */; };
@@ -111,6 +113,8 @@
 		0C754FA028A1FFF200A9F5A1 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateDlg.swift; sourceTree = "<group>"; };
 		0C754FA328A201A800A9F5A1 /* VersionUpdateDlg.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionUpdateDlg.xib; sourceTree = "<group>"; };
+		0C754FAE28A2190700A9F5A1 /* DebtDlg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtDlg.swift; sourceTree = "<group>"; };
+		0C754FAF28A2190700A9F5A1 /* DebtDlg.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebtDlg.xib; sourceTree = "<group>"; };
 		0C769FA227679C3C0012BD99 /* CoreDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDB.swift; sourceTree = "<group>"; };
 		0C76B196276B7B6E00C513A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C76B1A7276B7F7A00C513A4 /* Encodable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 				0C77A2C82766772F00952A79 /* CreateView.swift */,
 				0C4B9587276911A700F8F644 /* AddMemberDlg.swift */,
 				0C89A699276CC9EE0032CD8D /* AccountListDlg.swift */,
+				0C754FAE28A2190700A9F5A1 /* DebtDlg.swift */,
+				0C754FAF28A2190700A9F5A1 /* DebtDlg.xib */,
 				0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */,
 				0C754FA328A201A800A9F5A1 /* VersionUpdateDlg.xib */,
 				0C89A695276CC9740032CD8D /* CharacterList.swift */,
@@ -387,6 +393,7 @@
 			files = (
 				0C9FB9F92766E1CA003FF5CD /* LaunchScreen.storyboard in Resources */,
 				0C9F97DB287D7BE400C643EC /* SideMenuCell.xib in Resources */,
+				0C754FB128A2190700A9F5A1 /* DebtDlg.xib in Resources */,
 				0C89A6A4276CDA0E0032CD8D /* CharacterInfoView.xib in Resources */,
 				0C89A69C276CC9EE0032CD8D /* AccountListDlg.xib in Resources */,
 				0C77A2D02766773B00952A79 /* ExpensesCell.xib in Resources */,
@@ -444,6 +451,7 @@
 				0C95CE0E2893CA9800884862 /* GroupList.swift in Sources */,
 				0C77A2C62766772700952A79 /* Common.swift in Sources */,
 				0C89A6A7276CFBAF0032CD8D /* NameCell.swift in Sources */,
+				0C754FB028A2190700A9F5A1 /* DebtDlg.swift in Sources */,
 				0C77A2CA2766772F00952A79 /* CreateView.swift in Sources */,
 				0C77A2D22766774300952A79 /* NetWork.swift in Sources */,
 			);

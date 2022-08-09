@@ -17,7 +17,7 @@ protocol CharacterListDelegate{
     func ReloadMemberList()
 }
 
-class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource, AddMemberDlgDlgDelegate {
+class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource, AddMemberDlgDlgDelegate, DebtDlgDelegate {
     
     var characterList : [String] = []
     var datailInfo: [DeatilProfile] = []
@@ -28,6 +28,7 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource,
     let db = Firestore.firestore()
     var addMemberItem = UIBarButtonItem()
     var m_DlgAddMember: AddMemberDlg!
+    var m_oDebtDlg:  DebtDlg!
     var _delegate : CharacterListDelegate?
     
     @IBOutlet weak var m_table: UITableView!
@@ -40,6 +41,7 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource,
         m_oCharacterInfoView = CharacterInfoView(nibName: Common.xib_CharacterInfoView, bundle: nil)
         m_table.register(UINib(nibName: Common.xib_CharacterCell, bundle: nil), forCellReuseIdentifier: Common.xib_CharacterCell)
         m_DlgAddMember = AddMemberDlg(nibName: Common.xib_AddMemberDlg, bundle: nil)
+        m_oDebtDlg = DebtDlg(nibName: Common.xib_DebtDlg, bundle: nil)
         addMemberItem = UIBarButtonItem(image: #imageLiteral(resourceName: "add-user"), style: .plain, target: self, action: #selector(addMenber))
         self.navigationItem.rightBarButtonItem = addMemberItem
     }
@@ -78,15 +80,20 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource,
         if editingStyle == .delete {
             let controller = UIAlertController(title: "提醒", message: "確定刪除？", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "是的", style: .default) { _ in
-                memberArray = defaults.array(forKey: "NameList") ?? []
-                memberArray.remove(at: indexPath.row)
-                defaults.set(memberArray, forKey: "NameList")
-                self.characterList.remove(at: indexPath.row)
-                self.m_table.reloadData()
-                self.groupInfo.whos = memberArray as? [String] ?? []
-                self.groupInfo.date = Date()
-                let target: Int = Int(UserDefaults.GroupCode ?? "") ?? 0
-                self.updateGroupList(target, self.groupInfo)
+                if self.checkName(self.characterList[indexPath.row]) {
+                    self.UIShowHaveDebt(true)
+                } else {
+                    memberArray = defaults.array(forKey: "NameList") ?? []
+                    memberArray.remove(at: indexPath.row)
+                    defaults.set(memberArray, forKey: "NameList")
+                    self.characterList.remove(at: indexPath.row)
+                    self.m_table.reloadData()
+                    self.groupInfo.whos = memberArray as? [String] ?? []
+                    self.groupInfo.date = Date()
+                    let target: Int = Int(UserDefaults.GroupCode ?? "") ?? 0
+                    self.updateGroupList(target, self.groupInfo)
+                }
+                
             }
             controller.addAction(okAction)
             let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -173,14 +180,37 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource,
         }
     }
     
+    func UIShowHaveDebt(_ bShow: Bool) {
+        if let oView = m_oDebtDlg {
+            oView._delegate = self
+            DialogShow(oView, bShow)
+        }
+    }
+    
     func OnCancel() {
         UIShowAddMember(false)
+       
     }
     
     func OnOK(_ name: String) {
         UIShowAddMember(false)
         _delegate?.ReloadMemberList()
         
+    }
+    func DebtOnOk() {
+        UIShowHaveDebt(false)
+    }
+    
+    func checkName(_ target: String) -> Bool {
+        var verify: Bool = false
+        for i in datailInfo {
+            for name in i.whos {
+                if name == target {
+                    verify = true
+                }
+            }
+        }
+        return verify
     }
     
 }
