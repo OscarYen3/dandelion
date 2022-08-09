@@ -114,7 +114,7 @@ class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPi
             maskView.isHidden = true
             myCollectionView?.isUserInteractionEnabled = true
             viewButton.isHidden = false
-            btnAdd.isHidden = false
+            btnAdd.isHidden = true
         }
         
     }

@@ -12,6 +12,7 @@ import Network
 import MessageUI
 import Messages
 import FirebaseMessaging
+import SwiftyJSON
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,CreateViewDelegate, MFMessageComposeViewControllerDelegate,AccountListDlgDelegate , UIPickerViewDelegate, UIPickerViewDataSource, SlideMenuDelegate, UIViewControllerTransitioningDelegate,CharacterListDelegate {
    
@@ -43,15 +44,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     let toolBar = UIToolbar()
     var nameValue: String = ""
     var m_oSideMenu : SideMenuView?
+    var m_oVersionUpdateDlg : VersionUpdateDlg?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        m_oVersionUpdateDlg = VersionUpdateDlg(nibName: Common.xib_VersionUpdateDlg, bundle: nil)
         m_oSideMenu = SideMenuView(nibName: "SideMenuView", bundle: nil)
         rotateToPotrait()
         txtName.placeholder = "請選擇人物"
         processView.transform = processView.transform.scaledBy(x: 1, y: 2)
         processView.trackTintColor = UIColor.systemGroupedBackground
-        processView.progressTintColor = UIColor.systemBrown
        
         
         
@@ -196,12 +198,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             let cell = tableView.dequeueReusableCell(withIdentifier: Common.xib_CharacterCell, for: indexPath) as! CharacterCell
             var negativenumber: Int = 0
             cell.selectionStyle = .none
-            cell.lblName.text = (nameList[indexPath.row] )
-            cell.lblAmount.text = String(sumAmount2(nameList[indexPath.row] ))
-            negativenumber = sumAmount2(nameList[indexPath.row] )
-            if negativenumber < 0 {
-                debt += negativenumber
+            if indexPath.row > nameList.count {
+                
+            } else {
+//                cell.lblName.text = (nameList[indexPath.row] )
+//                cell.lblAmount.text = String(sumAmount2(nameList[indexPath.row] ))
+                negativenumber = sumAmount2(nameList[indexPath.row] )
+                if negativenumber < 0 {
+                    debt += negativenumber
+                }
             }
+            
             lblDebt.text =  String(format: "%d" , debt)
             
             return cell
@@ -537,6 +544,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if txtName.text == "" {
             doneClick()
         } else {
+            self.navigationItem.backButtonTitle = ""
             toInfo(txtName.text ?? "")
         }
         
@@ -671,4 +679,50 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             present(controller, animated: true, completion: nil)
         }
     }
+    
+    func appleCheck() {
+           let id: String = Bundle.main.bundleIdentifier ?? ""
+           let link = "https://itunes.apple.com/lookup?bundleId=\(id)"
+           let url: URL = URL(string: link)!
+           let session = URLSession.shared
+           let request = NSMutableURLRequest(url: url)
+           request.httpMethod = "GET"
+           request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringCacheData
+           let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+               guard let data: Data = data, let _: URLResponse = response, error == nil else {
+                   Log.d("ERROR at AppDelegate(checkAppVersion): Fetch App Info fail)")
+                   return
+               }
+               self.extractJSON(from: data)
+           })
+           task.resume()
+       }
+
+
+           func extractJSON(from data: Data) {
+           do {
+               let json = try JSON(data: data)
+               let appStoreVersion = json["results"][0]["version"].stringValue
+               let updateState: Int = VersionCompare(Bundle.main.versionNumber,(appStoreVersion))
+               if updateState == 1 {
+                   
+                   self.UIShowVersionUpdateDlg()
+               }
+           } catch {
+               Log.d("ERROR at AppDelegate(extractJSON): \(error)")
+               return
+           }
+       }
+
+
+          func UIShowVersionUpdateDlg() {
+           if let oView = m_oVersionUpdateDlg {
+               DispatchQueue.main.async {
+                   oView.modalPresentationStyle = .fullScreen
+                   oView.modalPresentationStyle = .custom
+                   oView.view.backgroundColor = UIColor.MyColor_Black()
+                   self.present(oView, animated: true, completion: nil)
+               }
+           }
+       }
 }

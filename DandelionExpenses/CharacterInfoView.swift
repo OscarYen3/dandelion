@@ -100,9 +100,10 @@ class CharacterInfoView: UIViewController,UITableViewDelegate,UITableViewDataSou
         let circlePath = UIBezierPath(ovalIn: CGRect(x: lineWidth , y: lineWidth , width: radius*2, height: radius*2))
         let circleLayer = CAShapeLayer()
         circleLayer.path = circlePath.cgPath
-        circleLayer.strokeColor = UIColor.systemGray4.cgColor
+        circleLayer.strokeColor = UIColor.systemGray6.cgColor
         circleLayer.lineWidth = lineWidth
         circleLayer.fillColor = UIColor.clear.cgColor
+        
         let percentage: CGFloat = CGFloat(debt) * 100
         let percentagePath = UIBezierPath(arcCenter: CGPoint(x: lineWidth  + radius, y: lineWidth  + radius), radius: radius, startAngle: aDegree * startDegree, endAngle: aDegree * (startDegree + 360 * percentage / 100), clockwise: true)
         let percentageLayer = CAShapeLayer()
@@ -113,7 +114,7 @@ class CharacterInfoView: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         displaylabel = UILabel(frame: CGRect(x: 0, y: 0, width: 2*(radius+lineWidth), height: 2*(radius+lineWidth)))
         displaylabel?.textAlignment = .center
-        displaylabel?.textColor = UIColor.black
+        displaylabel?.textColor = UIColor.white
         displaylabel?.font = UIFont.boldSystemFont(ofSize:  36)
         displaylabel?.text = "0"
         
@@ -126,7 +127,7 @@ class CharacterInfoView: UIViewController,UITableViewDelegate,UITableViewDataSou
         newLayer.path = percentagePath.cgPath
         newLayer.strokeEnd = 0
         newLayer.lineWidth = 20
-        newLayer.strokeColor = UIColor(red: 0, green: 0, blue: 1, alpha: 1).cgColor
+        newLayer.strokeColor = UIColor(red: CGFloat(40/255.0), green: CGFloat(50/255.0), blue: CGFloat(67/255.0), alpha: CGFloat(1.0)).cgColor
         newLayer.fillColor = UIColor.clear.cgColor
         lblAmount.layer.addSublayer(newLayer)
         

@@ -13,6 +13,10 @@
 		0C3446D92876D6B100DDC252 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3446D82876D6B100DDC252 /* Log.swift */; };
 		0C4B9589276911A700F8F644 /* AddMemberDlg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4B9587276911A700F8F644 /* AddMemberDlg.swift */; };
 		0C4B958A276911A700F8F644 /* AddMemberDlg.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C4B9588276911A700F8F644 /* AddMemberDlg.xib */; };
+		0C754F9F28A1FF8400A9F5A1 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0C754F9E28A1FF8400A9F5A1 /* SwiftyJSON */; };
+		0C754FA128A1FFF200A9F5A1 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C754FA028A1FFF200A9F5A1 /* Bundle+Extension.swift */; };
+		0C754FA428A201A800A9F5A1 /* VersionUpdateDlg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */; };
+		0C754FA528A201A800A9F5A1 /* VersionUpdateDlg.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C754FA328A201A800A9F5A1 /* VersionUpdateDlg.xib */; };
 		0C769FA327679C3C0012BD99 /* CoreDataDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C769FA227679C3C0012BD99 /* CoreDataDB.swift */; };
 		0C769FA42767A5030012BD99 /* DandelionExpensesDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C77A2B32766765300952A79 /* DandelionExpensesDB.xcdatamodeld */; };
 		0C76B197276B7B6E00C513A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C76B196276B7B6E00C513A4 /* GoogleService-Info.plist */; };
@@ -104,6 +108,9 @@
 		0C3446D82876D6B100DDC252 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		0C4B9587276911A700F8F644 /* AddMemberDlg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberDlg.swift; sourceTree = "<group>"; };
 		0C4B9588276911A700F8F644 /* AddMemberDlg.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMemberDlg.xib; sourceTree = "<group>"; };
+		0C754FA028A1FFF200A9F5A1 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateDlg.swift; sourceTree = "<group>"; };
+		0C754FA328A201A800A9F5A1 /* VersionUpdateDlg.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionUpdateDlg.xib; sourceTree = "<group>"; };
 		0C769FA227679C3C0012BD99 /* CoreDataDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDB.swift; sourceTree = "<group>"; };
 		0C76B196276B7B6E00C513A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C76B1A7276B7F7A00C513A4 /* Encodable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
@@ -171,6 +178,7 @@
 				0C76B1B5276B971A00C513A4 /* FirebaseAuth in Frameworks */,
 				0C76B1D1276B971A00C513A4 /* FirebaseStorage in Frameworks */,
 				0C76B1BB276B971A00C513A4 /* FirebaseDatabase in Frameworks */,
+				0C754F9F28A1FF8400A9F5A1 /* SwiftyJSON in Frameworks */,
 				0C76B1C3276B971A00C513A4 /* FirebaseFunctions in Frameworks */,
 				0C76B1B7276B971A00C513A4 /* FirebaseAuthCombine-Community in Frameworks */,
 				0C76B1CB276B971A00C513A4 /* FirebaseMessaging in Frameworks */,
@@ -215,6 +223,7 @@
 				0C3446BF2876C1AE00DDC252 /* DandelionExpenses.entitlements */,
 				0CC99C5F2898D84E005C84D1 /* UILabel+Extension.swift */,
 				0CC99C602898D84E005C84D1 /* UIView+Extension.swift */,
+				0C754FA028A1FFF200A9F5A1 /* Bundle+Extension.swift */,
 				0C76B1A7276B7F7A00C513A4 /* Encodable+Extension.swift */,
 				0C3446D82876D6B100DDC252 /* Log.swift */,
 				0C89A6D9276E835C0032CD8D /* CoreDataStack.swift */,
@@ -233,6 +242,8 @@
 				0C77A2C82766772F00952A79 /* CreateView.swift */,
 				0C4B9587276911A700F8F644 /* AddMemberDlg.swift */,
 				0C89A699276CC9EE0032CD8D /* AccountListDlg.swift */,
+				0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */,
+				0C754FA328A201A800A9F5A1 /* VersionUpdateDlg.xib */,
 				0C89A695276CC9740032CD8D /* CharacterList.swift */,
 				0C89A6A1276CDA0E0032CD8D /* CharacterInfoView.swift */,
 				0C77A2CB2766773B00952A79 /* ExpensesCell.swift */,
@@ -314,6 +325,7 @@
 				0C76B1D0276B971A00C513A4 /* FirebaseStorage */,
 				0C76B1D2276B971A00C513A4 /* FirebaseStorageCombine-Community */,
 				0C76B1D5276BA5E700C513A4 /* IQKeyboardManagerSwift */,
+				0C754F9E28A1FF8400A9F5A1 /* SwiftyJSON */,
 			);
 			productName = DandelionExpenses;
 			productReference = 0C77A2A72766765300952A79 /* DandelionExpenses.app */;
@@ -349,6 +361,7 @@
 			packageReferences = (
 				0C76B1AD276B971A00C513A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				0C76B1D4276BA5E700C513A4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				0C754F9D28A1FF8400A9F5A1 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 0C77A2A82766765300952A79 /* Products */;
 			projectDirPath = "";
@@ -385,6 +398,7 @@
 				0C4B958A276911A700F8F644 /* AddMemberDlg.xib in Resources */,
 				0C89A6A8276CFBAF0032CD8D /* NameCell.xib in Resources */,
 				0C9F97D7287D7A8300C643EC /* SideMenuView.xib in Resources */,
+				0C754FA528A201A800A9F5A1 /* VersionUpdateDlg.xib in Resources */,
 				0C76B197276B7B6E00C513A4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C0D903F27D25E8100629B72 /* AccountModel.swift in Sources */,
+				0C754FA128A1FFF200A9F5A1 /* Bundle+Extension.swift in Sources */,
 				0C89A69F276CD9D00032CD8D /* CharacterCell.swift in Sources */,
 				0C3446D92876D6B100DDC252 /* Log.swift in Sources */,
 				0C769FA42767A5030012BD99 /* DandelionExpensesDB.xcdatamodeld in Sources */,
@@ -416,6 +431,7 @@
 				0C89A6A3276CDA0E0032CD8D /* CharacterInfoView.swift in Sources */,
 				0C77A2CF2766773B00952A79 /* DeatilProfile.swift in Sources */,
 				0C76B1A8276B7F7A00C513A4 /* Encodable+Extension.swift in Sources */,
+				0C754FA428A201A800A9F5A1 /* VersionUpdateDlg.swift in Sources */,
 				0C4B9589276911A700F8F644 /* AddMemberDlg.swift in Sources */,
 				0C77A2AD2766765300952A79 /* SceneDelegate.swift in Sources */,
 				0CC99C622898D84E005C84D1 /* UIView+Extension.swift in Sources */,
@@ -650,7 +666,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oscaryen.DandelionExpenses;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -687,7 +703,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oscaryen.DandelionExpenses;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -729,6 +745,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0C754F9D28A1FF8400A9F5A1 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		0C76B1AD276B971A00C513A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -748,6 +772,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0C754F9E28A1FF8400A9F5A1 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C754F9D28A1FF8400A9F5A1 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		0C76B1AE276B971A00C513A4 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0C76B1AD276B971A00C513A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

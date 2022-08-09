@@ -41,6 +41,7 @@
                     </stackView>
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UKS-MB-Zyy">
                         <rect key="frame" x="150" y="37.5" width="160" height="4"/>
+                        <color key="tintColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                     </progressView>
                 </subviews>
                 <constraints>

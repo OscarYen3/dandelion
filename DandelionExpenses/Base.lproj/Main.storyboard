@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Sw-TH-lSI">
-                                <rect key="frame" x="52" y="75" width="310.5" height="158"/>
+                                <rect key="frame" x="52" y="98" width="310.5" height="158"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Inc-Mf-MRy">
                                         <rect key="frame" x="5" y="0.0" width="300.5" height="34"/>
@@ -54,6 +54,7 @@
                                     </stackView>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vdi-VY-5G3">
                                         <rect key="frame" x="5" y="49" width="300.5" height="4"/>
+                                        <color key="tintColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </progressView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="beH-1Y-pgH">
                                         <rect key="frame" x="5" y="68" width="300.5" height="90"/>
@@ -69,12 +70,12 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmG-kV-Hmx">
                                                         <rect key="frame" x="0.0" y="45" width="93.5" height="45"/>
-                                                        <color key="backgroundColor" red="0.47058823529999999" green="0.35294117650000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.70588235294117641" green="0.47058823529411764" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="hz6-bL-VRl"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.96344202759999997" green="0.67431360480000002" blue="0.1034859195" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -97,9 +98,9 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JXL-cV-q3f">
                                                         <rect key="frame" x="0.0" y="45" width="93.5" height="45"/>
-                                                        <color key="backgroundColor" red="0.47058823529999999" green="0.35294117650000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.70588235290000001" green="0.47058823529999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.96344202759999997" green="0.67431360480000002" blue="0.1034859195" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -113,8 +114,8 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQc-DI-hVF">
                                                 <rect key="frame" x="207" y="0.0" width="93.5" height="90"/>
-                                                <color key="backgroundColor" red="0.52549022440000004" green="0.43137252329999998" blue="0.34117650989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.70588235290000001" green="0.47058823529999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="詳細資訊"/>
                                                 <userDefinedRuntimeAttributes>
@@ -171,7 +172,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qhl-40-1Yp">
-                                <rect key="frame" x="30" y="253" width="354" height="35"/>
+                                <rect key="frame" x="30" y="276" width="354" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Os3-0F-h8t">
                                         <rect key="frame" x="0.0" y="0.0" width="88.5" height="20.5"/>
@@ -203,13 +204,13 @@
                                 </constraints>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jg-Gu-IeB">
-                                <rect key="frame" x="0.0" y="293" width="414" height="513"/>
+                                <rect key="frame" x="0.0" y="316" width="414" height="490"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cYZ-Ep-rRN">
-                                        <rect key="frame" x="10" y="0.0" width="806.5" height="513"/>
+                                        <rect key="frame" x="10" y="0.0" width="806.5" height="490"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ihY-u6-BFl">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="513"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="490"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="9QP-be-eUQ"/>
@@ -217,7 +218,7 @@
                                                 </connections>
                                             </tableView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mDz-zo-r4s">
-                                                <rect key="frame" x="413" y="0.0" width="393.5" height="513"/>
+                                                <rect key="frame" x="413" y="0.0" width="393.5" height="490"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="3yD-7N-glx"/>
@@ -251,7 +252,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZB-Kj-Z35">
                                 <rect key="frame" x="55.5" y="835" width="81.5" height="31"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.15686274509803921" green="0.21176470588235294" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="帳本"/>
@@ -272,7 +273,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5e-rI-8L7">
                                 <rect key="frame" x="167" y="806" width="80" height="80"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="JGx-sR-DTU"/>
                                     <constraint firstAttribute="width" constant="80" id="tcT-lM-SZg"/>
@@ -281,8 +282,8 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <backgroundConfiguration key="background" image="amount" imageContentMode="scaleToFill">
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="strokeColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -295,7 +296,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5m-AX-O9l">
                                 <rect key="frame" x="277" y="835" width="81.5" height="31"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="人物列表"/>
@@ -315,7 +316,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iz3-IF-NqI" userLabel="refresh">
-                                <rect key="frame" x="10" y="45" width="394" height="0.0"/>
+                                <rect key="frame" x="10" y="45" width="394" height="14"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
@@ -328,7 +329,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Iz3-IF-NqI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="0J6-JI-28g"/>
-                            <constraint firstItem="6Sw-TH-lSI" firstAttribute="top" secondItem="Iz3-IF-NqI" secondAttribute="bottom" constant="30" id="5M5-ET-35U"/>
                             <constraint firstItem="TRp-nt-EhN" firstAttribute="centerY" secondItem="Q5e-rI-8L7" secondAttribute="centerY" id="5ol-40-gvt"/>
                             <constraint firstItem="TRp-nt-EhN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6Sh-9o-nqT"/>
                             <constraint firstItem="7Jg-Gu-IeB" firstAttribute="top" secondItem="qhl-40-1Yp" secondAttribute="bottom" constant="5" id="A4W-eg-6f7"/>
@@ -353,6 +353,7 @@
                             <constraint firstItem="qhl-40-1Yp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r0F-ts-Aoh"/>
                             <constraint firstItem="Q5e-rI-8L7" firstAttribute="leading" secondItem="nZB-Kj-Z35" secondAttribute="trailing" constant="30" id="rWt-Qr-s9O"/>
                             <constraint firstItem="7Jg-Gu-IeB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vFI-hV-00W"/>
+                            <constraint firstItem="6Sw-TH-lSI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="xur-dU-DLO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Iz3-IF-NqI" secondAttribute="trailing" constant="10" id="yHd-Gl-b2U"/>
                         </constraints>
                     </view>
@@ -383,7 +384,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J1T-10-EHK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -393,25 +394,25 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <navigationBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                             <textAttributes key="titleTextAttributes">
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textAttributes>
                         </navigationBarAppearance>
                         <navigationBarAppearance key="compactAppearance">
-                            <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                             <textAttributes key="titleTextAttributes">
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textAttributes>
                         </navigationBarAppearance>
                         <navigationBarAppearance key="scrollEdgeAppearance">
-                            <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                             <textAttributes key="titleTextAttributes">
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textAttributes>
                         </navigationBarAppearance>
                         <navigationBarAppearance key="compactScrollEdgeAppearance">
-                            <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                         </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -426,8 +427,11 @@
     </scenes>
     <resources>
         <image name="amount" width="512" height="513"/>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

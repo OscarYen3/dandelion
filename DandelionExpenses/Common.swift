@@ -110,5 +110,22 @@ extension UserDefaults {
         }
     }
     
-    
+}
+
+func VersionCompare(_ ver1: String, _ ver2: String) -> Int {
+    if ver1.isEmpty || ver2.isEmpty {
+        return -1 // error version empty
+    }
+    else{
+        let result = ver1.compare(ver2, options: .numeric)
+        if result == ComparisonResult.orderedAscending {
+            return 1 // Upgrade ENABLE
+        }
+        else if result == ComparisonResult.orderedSame {
+            return 0 // Version is Newest nothing to update
+        }
+        else{
+            return 2 // Version is OLDER
+        }
+    }
 }

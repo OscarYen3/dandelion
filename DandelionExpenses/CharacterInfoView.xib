@@ -32,7 +32,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhU-px-I8r">
                     <rect key="frame" x="234" y="74" width="150" height="150"/>
-                    <color key="backgroundColor" red="0.86012121389821639" green="0.55146528544513462" blue="0.19619615323276707" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" red="0.70588235290000001" green="0.47058823529999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="a2h-ok-SZc"/>
                         <constraint firstAttribute="width" secondItem="IhU-px-I8r" secondAttribute="height" multiplier="1:1" id="mJl-fe-d4k"/>
