@@ -57,7 +57,7 @@ class AddMemberDlg: UIViewController {
                if let querySnapshot = querySnapshot {
                    let document = querySnapshot.documents.first
                    document?.reference.updateData(["date":data.date ])
-                   document?.reference.updateData(["whos": data.whos ], completion: { (error) in
+                   document?.reference.updateData(["whos": data.whos.removeDuplicateElement() ], completion: { (error) in
                    })
                }
            }
