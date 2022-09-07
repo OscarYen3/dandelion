@@ -19,7 +19,7 @@ class SideMenuView: UIViewController,UITableViewDataSource, UITableViewDelegate 
     @IBOutlet weak var lblAccount: UILabel!
     var _delegate : SlideMenuDelegate?
     var _btnMenu : UIButton!
-    var displayLabel = ["聯絡我"]
+    var displayLabel = ["聯絡我","Google相簿連結","行程規劃"]
     var mDataSource: [Dictionary<String, String>] = [Dictionary<String, String>]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +94,7 @@ func OnCloseMenuwithztable(_ tag:Int) {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIDevice.current.userInterfaceIdiom == .pad ? 60 : 40
+        return UIDevice.current.userInterfaceIdiom == .pad ? 120 : 80
     }
     
     

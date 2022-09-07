@@ -143,14 +143,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func SideMenuItemSelectedAtIndex(_ index: Int) {
-        let sidemenu : [String] = ["聯絡我"]
+        let sidemenu : [String] = ["聯絡我","Google相簿連結","行程規劃"]
         if index > -1 {
             switch(sidemenu[index]){
             case "聯絡我":
                 UIApplication.shared.openURL(NSURL(string: "mailto:haha780205@gmail.com")! as URL)
                 break
-            case "No2":
-                print("No2")
+            case "Google相簿連結":
+                let urlString = "https://photos.google.com/albums?pli=1"
+                let url = NSURL(string: urlString)
+                UIApplication.shared.openURL(url! as URL)
+                break
+            case "行程規劃":
+                //打開行程view
                 break
             default:
                 

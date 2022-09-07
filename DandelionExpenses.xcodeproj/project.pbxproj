@@ -72,6 +72,11 @@
 		0C9F97DA287D7BE400C643EC /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */; };
 		0C9F97DB287D7BE400C643EC /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */; };
 		0C9FB9F92766E1CA003FF5CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FB9F82766E1CA003FF5CD /* LaunchScreen.storyboard */; };
+		0CC64F0A28C88356007CE5A6 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC64F0828C88356007CE5A6 /* ScheduleView.swift */; };
+		0CC64F0B28C88356007CE5A6 /* ScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC64F0928C88356007CE5A6 /* ScheduleView.xib */; };
+		0CC64F0E28C883C2007CE5A6 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC64F0C28C883C2007CE5A6 /* ScheduleCell.swift */; };
+		0CC64F0F28C883C2007CE5A6 /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC64F0D28C883C2007CE5A6 /* ScheduleCell.xib */; };
+		0CC64F1128C8848D007CE5A6 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC64F1028C8848D007CE5A6 /* ScheduleModel.swift */; };
 		0CC99C612898D84E005C84D1 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC99C5F2898D84E005C84D1 /* UILabel+Extension.swift */; };
 		0CC99C622898D84E005C84D1 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC99C602898D84E005C84D1 /* UIView+Extension.swift */; };
 		0CE35B042880674C004874E9 /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE35B032880674C004874E9 /* SlideInTransition.swift */; };
@@ -150,6 +155,11 @@
 		0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
 		0C9FB9F82766E1CA003FF5CD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0CC64F0828C88356007CE5A6 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		0CC64F0928C88356007CE5A6 /* ScheduleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleView.xib; sourceTree = "<group>"; };
+		0CC64F0C28C883C2007CE5A6 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		0CC64F0D28C883C2007CE5A6 /* ScheduleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
+		0CC64F1028C8848D007CE5A6 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		0CC99C5F2898D84E005C84D1 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		0CC99C602898D84E005C84D1 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		0CE35B032880674C004874E9 /* SlideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
@@ -225,44 +235,20 @@
 			isa = PBXGroup;
 			children = (
 				0C3446BF2876C1AE00DDC252 /* DandelionExpenses.entitlements */,
-				0CC99C5F2898D84E005C84D1 /* UILabel+Extension.swift */,
-				0CC99C602898D84E005C84D1 /* UIView+Extension.swift */,
-				0C754FA028A1FFF200A9F5A1 /* Bundle+Extension.swift */,
-				0C76B1A7276B7F7A00C513A4 /* Encodable+Extension.swift */,
-				0C3446D82876D6B100DDC252 /* Log.swift */,
-				0C89A6D9276E835C0032CD8D /* CoreDataStack.swift */,
-				0C9F97D4287D7A8300C643EC /* SideMenuView.swift */,
-				0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */,
-				0CE35B032880674C004874E9 /* SlideInTransition.swift */,
-				0C77A2D12766774300952A79 /* NetWork.swift */,
-				0C77A2AA2766765300952A79 /* AppDelegate.swift */,
-				0C77A2AC2766765300952A79 /* SceneDelegate.swift */,
-				0C769FA227679C3C0012BD99 /* CoreDataDB.swift */,
-				0C77A2C52766772700952A79 /* Common.swift */,
-				0C77A2CC2766773B00952A79 /* DeatilProfile.swift */,
-				0C95CE0D2893CA9800884862 /* GroupList.swift */,
-				0C0D903E27D25E8100629B72 /* AccountModel.swift */,
-				0C77A2AE2766765300952A79 /* ViewController.swift */,
-				0C77A2C82766772F00952A79 /* CreateView.swift */,
-				0C4B9587276911A700F8F644 /* AddMemberDlg.swift */,
-				0C89A699276CC9EE0032CD8D /* AccountListDlg.swift */,
-				0C754FAE28A2190700A9F5A1 /* DebtDlg.swift */,
-				0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */,
-				0C89A695276CC9740032CD8D /* CharacterList.swift */,
-				0C89A6A1276CDA0E0032CD8D /* CharacterInfoView.swift */,
-				0C77A2CB2766773B00952A79 /* ExpensesCell.swift */,
-				0C89A69D276CD9D00032CD8D /* CharacterCell.swift */,
-				0C89A6A5276CFBAF0032CD8D /* NameCell.swift */,
-				0C89A6A6276CFBAF0032CD8D /* NameCell.xib */,
+				0CC64F0628C87E0A007CE5A6 /* Common */,
+				0CC64F0428C87DAD007CE5A6 /* Ex+ */,
+				0CC64F0728C87E16007CE5A6 /* Model */,
+				0CC64F0228C87D80007CE5A6 /* View */,
 				0C77A2B02766765300952A79 /* Main.storyboard */,
+				0C89A69A276CC9EE0032CD8D /* AccountListDlg.xib */,
+				0C4B9588276911A700F8F644 /* AddMemberDlg.xib */,
 				0C77A2C72766772F00952A79 /* CreateView.xib */,
 				0C89A696276CC9740032CD8D /* CharacterList.xib */,
 				0C89A6A2276CDA0E0032CD8D /* CharacterInfoView.xib */,
 				0C9F97D5287D7A8300C643EC /* SideMenuView.xib */,
-				0C89A69A276CC9EE0032CD8D /* AccountListDlg.xib */,
-				0C4B9588276911A700F8F644 /* AddMemberDlg.xib */,
 				0C754FAF28A2190700A9F5A1 /* DebtDlg.xib */,
 				0C754FA328A201A800A9F5A1 /* VersionUpdateDlg.xib */,
+				0C89A6A6276CFBAF0032CD8D /* NameCell.xib */,
 				0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */,
 				0C89A69E276CD9D00032CD8D /* CharacterCell.xib */,
 				0C77A2CD2766773B00952A79 /* ExpensesCell.xib */,
@@ -273,6 +259,83 @@
 				0C77A2B32766765300952A79 /* DandelionExpensesDB.xcdatamodeld */,
 			);
 			path = DandelionExpenses;
+			sourceTree = "<group>";
+		};
+		0CC64F0228C87D80007CE5A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0CC64F0328C87D8C007CE5A6 /* Cell */,
+				0CC64F0528C87DD3007CE5A6 /* Dlailog */,
+				0C77A2C82766772F00952A79 /* CreateView.swift */,
+				0C89A695276CC9740032CD8D /* CharacterList.swift */,
+				0C89A6A1276CDA0E0032CD8D /* CharacterInfoView.swift */,
+				0C9F97D4287D7A8300C643EC /* SideMenuView.swift */,
+				0CC64F0828C88356007CE5A6 /* ScheduleView.swift */,
+				0CC64F0928C88356007CE5A6 /* ScheduleView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0CC64F0328C87D8C007CE5A6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0C77A2CB2766773B00952A79 /* ExpensesCell.swift */,
+				0C89A69D276CD9D00032CD8D /* CharacterCell.swift */,
+				0C89A6A5276CFBAF0032CD8D /* NameCell.swift */,
+				0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */,
+				0CC64F0C28C883C2007CE5A6 /* ScheduleCell.swift */,
+				0CC64F0D28C883C2007CE5A6 /* ScheduleCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0CC64F0428C87DAD007CE5A6 /* Ex+ */ = {
+			isa = PBXGroup;
+			children = (
+				0CE35B032880674C004874E9 /* SlideInTransition.swift */,
+				0CC99C5F2898D84E005C84D1 /* UILabel+Extension.swift */,
+				0CC99C602898D84E005C84D1 /* UIView+Extension.swift */,
+				0C754FA028A1FFF200A9F5A1 /* Bundle+Extension.swift */,
+				0C76B1A7276B7F7A00C513A4 /* Encodable+Extension.swift */,
+				0C3446D82876D6B100DDC252 /* Log.swift */,
+			);
+			path = "Ex+";
+			sourceTree = "<group>";
+		};
+		0CC64F0528C87DD3007CE5A6 /* Dlailog */ = {
+			isa = PBXGroup;
+			children = (
+				0C89A699276CC9EE0032CD8D /* AccountListDlg.swift */,
+				0C4B9587276911A700F8F644 /* AddMemberDlg.swift */,
+				0C754FAE28A2190700A9F5A1 /* DebtDlg.swift */,
+				0C77A2AE2766765300952A79 /* ViewController.swift */,
+				0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */,
+			);
+			path = Dlailog;
+			sourceTree = "<group>";
+		};
+		0CC64F0628C87E0A007CE5A6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0C77A2AA2766765300952A79 /* AppDelegate.swift */,
+				0C89A6D9276E835C0032CD8D /* CoreDataStack.swift */,
+				0C769FA227679C3C0012BD99 /* CoreDataDB.swift */,
+				0C77A2C52766772700952A79 /* Common.swift */,
+				0C77A2D12766774300952A79 /* NetWork.swift */,
+				0C77A2AC2766765300952A79 /* SceneDelegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0CC64F0728C87E16007CE5A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C77A2CC2766773B00952A79 /* DeatilProfile.swift */,
+				0C95CE0D2893CA9800884862 /* GroupList.swift */,
+				0C0D903E27D25E8100629B72 /* AccountModel.swift */,
+				0CC64F1028C8848D007CE5A6 /* ScheduleModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,6 +456,7 @@
 			files = (
 				0C9FB9F92766E1CA003FF5CD /* LaunchScreen.storyboard in Resources */,
 				0C9F97DB287D7BE400C643EC /* SideMenuCell.xib in Resources */,
+				0CC64F0F28C883C2007CE5A6 /* ScheduleCell.xib in Resources */,
 				0C754FB128A2190700A9F5A1 /* DebtDlg.xib in Resources */,
 				0C89A6A4276CDA0E0032CD8D /* CharacterInfoView.xib in Resources */,
 				0C89A69C276CC9EE0032CD8D /* AccountListDlg.xib in Resources */,
@@ -404,6 +468,7 @@
 				0C89A6A0276CD9D00032CD8D /* CharacterCell.xib in Resources */,
 				0C4B958A276911A700F8F644 /* AddMemberDlg.xib in Resources */,
 				0C89A6A8276CFBAF0032CD8D /* NameCell.xib in Resources */,
+				0CC64F0B28C88356007CE5A6 /* ScheduleView.xib in Resources */,
 				0C9F97D7287D7A8300C643EC /* SideMenuView.xib in Resources */,
 				0C754FA528A201A800A9F5A1 /* VersionUpdateDlg.xib in Resources */,
 				0C76B197276B7B6E00C513A4 /* GoogleService-Info.plist in Resources */,
@@ -430,12 +495,14 @@
 				0C89A69F276CD9D00032CD8D /* CharacterCell.swift in Sources */,
 				0C3446D92876D6B100DDC252 /* Log.swift in Sources */,
 				0C769FA42767A5030012BD99 /* DandelionExpensesDB.xcdatamodeld in Sources */,
+				0CC64F0A28C88356007CE5A6 /* ScheduleView.swift in Sources */,
 				0C89A697276CC9740032CD8D /* CharacterList.swift in Sources */,
 				0C89A6DA276E835C0032CD8D /* CoreDataStack.swift in Sources */,
 				0C769FA327679C3C0012BD99 /* CoreDataDB.swift in Sources */,
 				0C77A2AF2766765300952A79 /* ViewController.swift in Sources */,
 				0C77A2AB2766765300952A79 /* AppDelegate.swift in Sources */,
 				0C89A6A3276CDA0E0032CD8D /* CharacterInfoView.swift in Sources */,
+				0CC64F1128C8848D007CE5A6 /* ScheduleModel.swift in Sources */,
 				0C77A2CF2766773B00952A79 /* DeatilProfile.swift in Sources */,
 				0C76B1A8276B7F7A00C513A4 /* Encodable+Extension.swift in Sources */,
 				0C754FA428A201A800A9F5A1 /* VersionUpdateDlg.swift in Sources */,
@@ -450,6 +517,7 @@
 				0C77A2CE2766773B00952A79 /* ExpensesCell.swift in Sources */,
 				0C95CE0E2893CA9800884862 /* GroupList.swift in Sources */,
 				0C77A2C62766772700952A79 /* Common.swift in Sources */,
+				0CC64F0E28C883C2007CE5A6 /* ScheduleCell.swift in Sources */,
 				0C89A6A7276CFBAF0032CD8D /* NameCell.swift in Sources */,
 				0C754FB028A2190700A9F5A1 /* DebtDlg.swift in Sources */,
 				0C77A2CA2766772F00952A79 /* CreateView.swift in Sources */,
