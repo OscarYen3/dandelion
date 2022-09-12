@@ -11,17 +11,19 @@ class ScheduleCell: UITableViewCell {
 
     @IBOutlet weak var lblIndex: UILabel!
     @IBOutlet weak var lblEvent: UILabel!
-    @IBOutlet weak var lblTime: UILabel!
+    @IBOutlet weak var lblNote: UILabel!
+    @IBOutlet weak var topline: UIView!
+    @IBOutlet weak var bottomLine: UIView!
     
     var index = ""
     var event = ""
-    var time = ""
+    var note = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
         lblIndex.text = index
         lblEvent.text = event
-        lblTime.text = time
+        lblNote.text = note
         
     }
 

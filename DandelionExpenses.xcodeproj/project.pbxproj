@@ -11,6 +11,8 @@
 		0C3446C72876C51A00DDC252 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3446C62876C51A00DDC252 /* NotificationService.swift */; };
 		0C3446CB2876C51A00DDC252 /* DandelionNotify.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0C3446C42876C51A00DDC252 /* DandelionNotify.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0C3446D92876D6B100DDC252 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3446D82876D6B100DDC252 /* Log.swift */; };
+		0C46D02E28CF167900EB79C9 /* ScheduleEditDlg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C46D02C28CF167900EB79C9 /* ScheduleEditDlg.swift */; };
+		0C46D02F28CF167900EB79C9 /* ScheduleEditDlg.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C46D02D28CF167900EB79C9 /* ScheduleEditDlg.xib */; };
 		0C4B9589276911A700F8F644 /* AddMemberDlg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4B9587276911A700F8F644 /* AddMemberDlg.swift */; };
 		0C4B958A276911A700F8F644 /* AddMemberDlg.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C4B9588276911A700F8F644 /* AddMemberDlg.xib */; };
 		0C754F9F28A1FF8400A9F5A1 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0C754F9E28A1FF8400A9F5A1 /* SwiftyJSON */; };
@@ -113,6 +115,8 @@
 		0C3446C62876C51A00DDC252 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		0C3446C82876C51A00DDC252 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C3446D82876D6B100DDC252 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		0C46D02C28CF167900EB79C9 /* ScheduleEditDlg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEditDlg.swift; sourceTree = "<group>"; };
+		0C46D02D28CF167900EB79C9 /* ScheduleEditDlg.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleEditDlg.xib; sourceTree = "<group>"; };
 		0C4B9587276911A700F8F644 /* AddMemberDlg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberDlg.swift; sourceTree = "<group>"; };
 		0C4B9588276911A700F8F644 /* AddMemberDlg.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMemberDlg.xib; sourceTree = "<group>"; };
 		0C754FA028A1FFF200A9F5A1 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
@@ -310,6 +314,8 @@
 				0C754FAE28A2190700A9F5A1 /* DebtDlg.swift */,
 				0C77A2AE2766765300952A79 /* ViewController.swift */,
 				0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */,
+				0C46D02C28CF167900EB79C9 /* ScheduleEditDlg.swift */,
+				0C46D02D28CF167900EB79C9 /* ScheduleEditDlg.xib */,
 			);
 			path = Dlailog;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 				0CC64F0F28C883C2007CE5A6 /* ScheduleCell.xib in Resources */,
 				0C754FB128A2190700A9F5A1 /* DebtDlg.xib in Resources */,
 				0C89A6A4276CDA0E0032CD8D /* CharacterInfoView.xib in Resources */,
+				0C46D02F28CF167900EB79C9 /* ScheduleEditDlg.xib in Resources */,
 				0C89A69C276CC9EE0032CD8D /* AccountListDlg.xib in Resources */,
 				0C77A2D02766773B00952A79 /* ExpensesCell.xib in Resources */,
 				0C77A2C92766772F00952A79 /* CreateView.xib in Resources */,
@@ -500,6 +507,7 @@
 				0C89A6DA276E835C0032CD8D /* CoreDataStack.swift in Sources */,
 				0C769FA327679C3C0012BD99 /* CoreDataDB.swift in Sources */,
 				0C77A2AF2766765300952A79 /* ViewController.swift in Sources */,
+				0C46D02E28CF167900EB79C9 /* ScheduleEditDlg.swift in Sources */,
 				0C77A2AB2766765300952A79 /* AppDelegate.swift in Sources */,
 				0C89A6A3276CDA0E0032CD8D /* CharacterInfoView.swift in Sources */,
 				0CC64F1128C8848D007CE5A6 /* ScheduleModel.swift in Sources */,

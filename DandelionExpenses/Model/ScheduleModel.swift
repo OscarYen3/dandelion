@@ -9,11 +9,11 @@ import Foundation
 
 class Schedule: Codable{
     var event : String
-    var time : Date
+    var note : String
     
     init() {
         self.event = ""
-        self.time = Date()
+        self.note = ""
        
     }
 }

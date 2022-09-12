@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScheduleView" customModule="DandelionExpenses" customModuleProvider="target">
             <connections>
+                <outlet property="_tblMenu" destination="7fe-az-VSJ" id="XgP-qX-rgW"/>
+                <outlet property="btnEdit" destination="sOd-Nl-1SN" id="ucr-S4-qiE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,20 +20,56 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7fe-az-VSJ">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7fe-az-VSJ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="836"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="MwF-Cc-x6E"/>
+                        <outlet property="delegate" destination="-1" id="Nw0-FU-z9e"/>
+                    </connections>
                 </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AzQ-xI-PqM">
+                    <rect key="frame" x="0.0" y="836" width="414" height="60"/>
+                    <subviews>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIn-Wb-GzH">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="60"/>
+                            <color key="backgroundColor" red="0.70588235290000001" green="0.47058823529999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOd-Nl-1SN">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                            <color key="backgroundColor" red="0.70588235290000001" green="0.47058823529999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="編輯">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="editClick:" destination="-1" eventType="touchUpInside" id="Aco-Ug-wgW"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="bW8-qD-xHU"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="7fe-az-VSJ" secondAttribute="bottom" id="BIf-M8-K1N"/>
+                <constraint firstAttribute="bottom" secondItem="AzQ-xI-PqM" secondAttribute="bottom" id="ArJ-Og-Ftg"/>
+                <constraint firstItem="AzQ-xI-PqM" firstAttribute="top" secondItem="7fe-az-VSJ" secondAttribute="bottom" id="AxS-vR-avY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AzQ-xI-PqM" secondAttribute="trailing" id="dCX-nO-7Uu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7fe-az-VSJ" secondAttribute="trailing" id="n8R-Vt-apJ"/>
+                <constraint firstItem="AzQ-xI-PqM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="s35-Gg-Evn"/>
                 <constraint firstItem="7fe-az-VSJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="stw-kC-3TH"/>
                 <constraint firstItem="7fe-az-VSJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zKv-NT-OJY"/>
             </constraints>
-            <point key="canvasLocation" x="133" y="84"/>
+            <point key="canvasLocation" x="131.8840579710145" y="83.705357142857139"/>
         </view>
     </objects>
     <resources>

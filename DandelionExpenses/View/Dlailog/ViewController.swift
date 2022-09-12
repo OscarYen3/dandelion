@@ -46,10 +46,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var m_oSideMenu : SideMenuView?
     var m_oVersionUpdateDlg : VersionUpdateDlg?
     var groupInfo: GroupList = GroupList()
+    var m_oScheduleView: ScheduleView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         m_oVersionUpdateDlg = VersionUpdateDlg(nibName: Common.xib_VersionUpdateDlg, bundle: nil)
+        m_oScheduleView = ScheduleView(nibName: Common.xib_ScheduleView, bundle: nil)
         m_oSideMenu = SideMenuView(nibName: "SideMenuView", bundle: nil)
         rotateToPotrait()
         txtName.placeholder = "請選擇人物"
@@ -155,7 +157,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 UIApplication.shared.openURL(url! as URL)
                 break
             case "行程規劃":
-                //打開行程view
+                if let oView = m_oScheduleView {
+                    oView.navigationItem.title = "行程規劃"
+                    self.navigationItem.backButtonTitle = ""
+                    self.navigationController?.pushViewController(oView, animated: true)
+                }
                 break
             default:
                 
