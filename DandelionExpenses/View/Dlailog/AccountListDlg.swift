@@ -256,6 +256,20 @@ class AccountListDlg: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
           }
       }
     
+    func addScheduleList(_ group: Schedule,_ groupName: String) {
+        UserDefaults.Account = groupName
+        _ = db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Schedule") ).addDocument(data: [
+            "date": group.date ,
+            "scheduleCode": group.scheduleCode,
+            "event": group.event,
+            "note": group.note,
+          ]) { (error) in
+              if let error = error {
+                  print(error)
+              }
+          }
+      }
+    
     func updateGroupList(_ target: Int, _ data: GroupList) {
         db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Group") ).whereField("groupCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
                if let querySnapshot = querySnapshot {

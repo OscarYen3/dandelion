@@ -62,21 +62,28 @@
                         <constraints>
                             <constraint firstItem="iik-9g-gAu" firstAttribute="width" secondItem="w2x-ZZ-cbl" secondAttribute="width" multiplier="0.6" id="GMj-TR-fjL"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0c-uG-gjW" userLabel="topLine">
-                        <rect key="frame" x="165.5" y="0.0" width="1" height="11"/>
+                        <rect key="frame" x="165.5" y="0.0" width="1" height="10"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="lFE-R1-V42"/>
-                            <constraint firstAttribute="height" constant="11" id="xAC-J8-D0d"/>
+                            <constraint firstAttribute="height" constant="10" id="xAC-J8-D0d"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bp2-G9-9BQ" userLabel="bottomLine">
-                        <rect key="frame" x="165.5" y="154" width="1" height="11"/>
+                        <rect key="frame" x="165.5" y="154.5" width="1" height="10.5"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="743-AO-WKk"/>
-                            <constraint firstAttribute="height" constant="11" id="vGl-P2-Tzw"/>
+                            <constraint firstAttribute="height" constant="10.5" id="vGl-P2-Tzw"/>
                         </constraints>
                     </view>
                 </subviews>

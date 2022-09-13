@@ -8,10 +8,14 @@
 import Foundation
 
 class Schedule: Codable{
+    var scheduleCode : Int
+    var date : Date
     var event : String
     var note : String
     
     init() {
+        self.scheduleCode = 0
+        self.date = Date()
         self.event = ""
         self.note = ""
        

@@ -209,10 +209,11 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource,
         var verify: Bool = false
         for i in datailInfo {
             for name in i.whos {
-                if name == target && amountValue == "0" {
-                    verify = false
-                } else {
+                if name == target && amountValue != "0" {
                     verify = true
+                    break
+                } else {
+                    verify = false
                 }
             }
         }
