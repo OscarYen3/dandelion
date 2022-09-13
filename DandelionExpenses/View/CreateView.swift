@@ -271,9 +271,6 @@ class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPi
                 navigationController?.popViewController(animated: true)
             }
         }
-      
-        
-       
         
     }
     

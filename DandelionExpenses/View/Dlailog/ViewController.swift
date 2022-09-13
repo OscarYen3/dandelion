@@ -362,6 +362,20 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     }
                 }
                 
+                self.db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Schedule") ).getDocuments { (querySnapshot, error) in
+                    if let querySnapshot = querySnapshot {
+                        deleteGroupAllObject(selectGroupObject())
+                        for document in querySnapshot.documents {
+                            print(document.data())
+                            
+                            self.scheduleConvert(target: document)
+                        }
+                    }
+                }
+                
+                
+                
+                
             }
             
             self.m_table.reloadData()
@@ -429,6 +443,29 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         UserDefaults.GroupCode =  String(data.groupCode)
         updateNameList()
     }
+    
+    func scheduleConvert(target: QueryDocumentSnapshot){
+        let data: Schedule = Schedule()
+        for i in target.data() {
+            switch i.key {
+            case "date":
+                data.date = i.value as! Date
+            case "event":
+                data.event = i.value as! String
+            case "note":
+                data.note = i.value as! String
+            default:
+                break
+            }
+            
+        }
+        data.scheduleId = target.documentID
+        insertScheduleObject(Schedule(data))
+        
+    }
+    
+    
+    
      
         
         func deleteDocument(_ target: String?) {
@@ -687,6 +724,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                             oView.characterList = self.nameList
                             oView.nameList  = self.nameList
                             oView.m_table.reloadData()
+                        }
+                    }
+                }
+                
+                self.db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Schedule") ).getDocuments { (querySnapshot, error) in
+                    if let querySnapshot = querySnapshot {
+                        deleteGroupAllObject(selectGroupObject())
+                        for document in querySnapshot.documents {
+                            print(document.data())
+                            
+                            self.scheduleConvert(target: document)
                         }
                     }
                 }

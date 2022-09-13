@@ -9,7 +9,8 @@ import UIKit
 
 protocol ScheduleEditDlgDelegate {
     func editScheduleCancel()
-    func editScheduleOk()
+    func editScheduleOk(scheduleProfile:Schedule)
+    func newScheduleOk(scheduleProfile:Schedule)
 }
 
 
@@ -20,23 +21,43 @@ class ScheduleEditDlg: UIViewController, UITextViewDelegate {
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnOk: UIButton!
     @IBOutlet weak var textView: UIView!
+    @IBOutlet weak var txtDate: UITextField!
+    @IBOutlet weak var lblTitle: UILabel!
     
     var _delegate: ScheduleEditDlgDelegate?
+    var titleName : String = ""
+    var userCodeValue: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         txtEvent.delegate = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        lblTitle.text = titleName
     }
 
     @IBAction func btnClick(_ sender: UIButton) {
-        
+        let data = Schedule()
+        data.date = Date()
+        let timeInterval = data.date.timeIntervalSince1970
+
         switch sender {
         case btnCancel:
             _delegate?.editScheduleCancel()
             
             break
         case btnOk:
-            _delegate?.editScheduleOk()
+            
+            
+            if titleName == "新增行程" {
+                data.scheduleCode = Int(timeInterval)
+                self._delegate?.newScheduleOk(scheduleProfile: data)
+            } else if titleName == "編輯行程"  {
+                data.scheduleCode = userCodeValue
+                self._delegate?.editScheduleOk(scheduleProfile: data)
+            }
            
             break
             

@@ -256,3 +256,96 @@ func selectGroupObject() -> Array<GroupList> {
     return ConvertArray
     
 }
+
+
+//===================================================================================
+// MARK: - Schedule
+//===================================================================================
+
+//新增資料
+func insertScheduleObject(_ obj: Schedule) {
+    let Data = NSEntityDescription.insertNewObject(forEntityName: "ScheduleDB", into: viewContext) as! ScheduleDB
+  
+    Data.scheduleCode = Int32(obj.scheduleCode)
+    Data.date = obj.date
+    Data.event = obj.event
+    Data.note = obj.note
+    app.saveContext()
+}
+
+
+
+//刪除所有資料
+func deleteScheduleAllObject(_ fertilizerData: [Schedule] ) {
+    //刪除:將查詢到的結果刪除後，再呼叫context.save()儲存
+    let request = NSFetchRequest<ScheduleDB>(entityName: "ScheduleDB")
+    do {
+        let results = try viewContext.fetch(request)
+        for item in results {
+          viewContext.delete(item)
+        }
+        app.saveContext()
+    }catch{
+        fatalError("Failed to fetch data: \(error)")
+    }
+}
+
+//刪除資料
+func deleteScheduleObject(indexPath:IndexPath,_ schedule: [Schedule] ) {
+    //刪除:將查詢到的結果刪除後，再呼叫context.save()儲存
+    let request = NSFetchRequest<ScheduleDB>(entityName: "ScheduleDB")
+    do {
+        let results = try viewContext.fetch(request)
+        for item in results {
+            if item.scheduleCode == schedule[indexPath.row].scheduleCode {
+                viewContext.delete(item)
+            }
+        }
+        
+        app.saveContext()
+    }catch{
+        fatalError("Failed to fetch data: \(error)")
+    }
+}
+
+//更新資料
+func updateScheduleObject(_ data:Schedule) {
+    //更新:將查詢到的結果更新後，再呼叫context.save()儲存
+    let request = NSFetchRequest<ScheduleDB>(entityName: "ScheduleDB")
+    do {
+        let results = try viewContext.fetch(request)
+        for item in results {
+            if item.scheduleCode == data.scheduleCode {
+                item.date = data.date
+                item.event = data.event
+                item.note = data.note
+            }
+        }
+        app.saveContext()
+    }catch{
+        fatalError("Failed to fetch data: \(error)")
+    }
+}
+
+//查詢資料
+func selectScheduleObject() -> Array<Schedule> {
+    var array:[ScheduleDB] = []
+    var ConvertArray: [Schedule] = []
+    let request = NSFetchRequest<ScheduleDB>(entityName: "ScheduleDB")
+    do {
+        let results = try viewContext.fetch(request)
+        for result in results {
+            array.append(result)
+        }
+    }catch{
+        fatalError("Failed to fetch data: \(error)")
+    }
+    
+    for i in array {
+        ConvertArray.append(Schedule(i))
+    }
+    
+    ConvertArray.sort { $0.scheduleCode > $1.scheduleCode}
+    return ConvertArray
+    
+}

@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="_tblMenu" destination="7fe-az-VSJ" id="XgP-qX-rgW"/>
                 <outlet property="btnEdit" destination="sOd-Nl-1SN" id="ucr-S4-qiE"/>
+                <outlet property="txtDate" destination="vko-Jo-bhL" id="3yi-fV-OQE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,8 +21,16 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="日期" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vko-Jo-bhL">
+                    <rect key="frame" x="83" y="54" width="248" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="j98-Lj-pY5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7fe-az-VSJ">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="836"/>
+                    <rect key="frame" x="0.0" y="109" width="414" height="727"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="MwF-Cc-x6E"/>
@@ -61,13 +70,16 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="vko-Jo-bhL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="11G-6Y-beO"/>
+                <constraint firstItem="vko-Jo-bhL" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="5Sg-Wc-EtK"/>
                 <constraint firstAttribute="bottom" secondItem="AzQ-xI-PqM" secondAttribute="bottom" id="ArJ-Og-Ftg"/>
                 <constraint firstItem="AzQ-xI-PqM" firstAttribute="top" secondItem="7fe-az-VSJ" secondAttribute="bottom" id="AxS-vR-avY"/>
+                <constraint firstItem="vko-Jo-bhL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="GLY-Sd-6Zp"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AzQ-xI-PqM" secondAttribute="trailing" id="dCX-nO-7Uu"/>
+                <constraint firstItem="7fe-az-VSJ" firstAttribute="top" secondItem="vko-Jo-bhL" secondAttribute="bottom" constant="10" id="f8c-J5-twR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7fe-az-VSJ" secondAttribute="trailing" id="n8R-Vt-apJ"/>
                 <constraint firstItem="AzQ-xI-PqM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="s35-Gg-Evn"/>
                 <constraint firstItem="7fe-az-VSJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="stw-kC-3TH"/>
-                <constraint firstItem="7fe-az-VSJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zKv-NT-OJY"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="83.705357142857139"/>
         </view>

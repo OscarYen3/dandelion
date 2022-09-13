@@ -12,7 +12,7 @@ class GroupList: Codable {
     var groupId: String
     var date: Date
     var groupCode: Int
-    var whos:[String]
+    var whos: [String]
     
     
     init() {
