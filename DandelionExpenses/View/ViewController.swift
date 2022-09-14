@@ -463,21 +463,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         insertScheduleObject(Schedule(data))
         
     }
-    
-    
-    
-     
-        
-        func deleteDocument(_ target: String?) {
+            
+    func deleteDocument(_ target: String?) {
         guard let newTarget = target else { return }
         db.collection(UserDefaults.Account ?? Common.collection2).document(newTarget).delete() { err   in
-                if let err = err {
-                    print("Error removing document: \(err)")
-                } else {
-                    print("Document successfully removed!")
-                }
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
             }
         }
+    }
     
     func addData(_ profile: DeatilProfile) {
 //        var ref: DocumentReference? = nil

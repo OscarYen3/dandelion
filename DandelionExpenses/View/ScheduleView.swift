@@ -14,14 +14,12 @@ import CoreData
 
 class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,ScheduleEditDlgDelegate {
   
-    
-    
-    
-    @IBOutlet weak var _tblMenu: UITableView!
+    @IBOutlet weak var _tblList: UITableView!
     @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var txtDate: UITextField!
     
-    var scheduleData : [Schedule] =  []
+    var scheduleData: [Schedule] =  []
+    var showSchedule: [Schedule] =  []
     var m_oScheduleEditDlg : ScheduleEditDlg!
     let formatter = DateFormatter()
     var selectDateView = UIDatePicker()
@@ -39,7 +37,7 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         m_oScheduleEditDlg = ScheduleEditDlg(nibName: Common.xib_ScheduleEditDlg, bundle: nil)
-        _tblMenu.register(UINib(nibName: Common.xib_ScheduleCell, bundle: nil), forCellReuseIdentifier: Common.xib_ScheduleCell)
+        _tblList.register(UINib(nibName: Common.xib_ScheduleCell, bundle: nil), forCellReuseIdentifier: Common.xib_ScheduleCell)
         
         selectDateView = UIDatePicker(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200))
         selectDateView.backgroundColor = UIColor.white
@@ -65,16 +63,16 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         
         addScheduleItem = UIBarButtonItem(image: #imageLiteral(resourceName: "calendar"), style: .plain, target: self, action: #selector(addScheduleClick))
                 self.navigationItem.rightBarButtonItem = addScheduleItem
-        testData1.note = "A"
-        testData2.note = "B"
-        testData3.note = "C"
-        testData4.note = "D"
-        testData5.note = "E"
-        scheduleData.append(testData1)
-        scheduleData.append(testData2)
-        scheduleData.append(testData3)
-        scheduleData.append(testData4)
-        scheduleData.append(testData5)
+//        testData1.note = "A"
+//        testData2.note = "B"
+//        testData3.note = "C"
+//        testData4.note = "D"
+//        testData5.note = "E"
+//        scheduleData.append(testData1)
+//        scheduleData.append(testData2)
+//        scheduleData.append(testData3)
+//        scheduleData.append(testData4)
+//        scheduleData.append(testData5)
         
     }
     
@@ -86,6 +84,9 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         let date = dateText ?? Date()
         txtDate.text = formatter.string(from: date)
         self.view.endEditing(true)
+        
+        showSchedule = filterSchedule()
+        _tblList.reloadData()
     }
     
     @objc func cancelClick()  {
@@ -101,7 +102,7 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scheduleData.count
+        return showSchedule.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -144,7 +145,7 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
             }
         }
         
-        _tblMenu.reloadData()
+        _tblList.reloadData()
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -158,9 +159,10 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .default, title: "刪除") {
             action, index in
-
+            self.deleteScheduleDocument(self.scheduleData[indexPath.row].scheduleId)
             self.scheduleData.remove(at: index.row)
-            self._tblMenu.reloadData()
+            self._tblList.reloadData()
+            self.readData()
         }
         return [deleteAction]
     }
@@ -197,7 +199,8 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
                 }
             }
             updateSchedule(scheduleProfile.scheduleCode, scheduleProfile)
-            _tblMenu.reloadData()
+            self.showSchedule = self.filterSchedule()
+            _tblList.reloadData()
         }
         
     }
@@ -221,7 +224,7 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
     }
     
     @IBAction func editClick(_ sender: Any) {
-        _tblMenu.isEditing = !_tblMenu.isEditing
+        _tblList.isEditing = !_tblList.isEditing
     }
     
     
@@ -254,6 +257,17 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
            }
        }
     
+    func deleteScheduleDocument(_ target: String?) {
+        guard let newTarget = target else { return }
+        db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Schedule")).document(newTarget).delete() { err   in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+    }
+    
     
     func readData() {
         if UserDefaults.Account == "" {
@@ -261,13 +275,16 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         }
         self.db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Schedule") ).getDocuments { (querySnapshot, error) in
             if let querySnapshot = querySnapshot {
-                deleteGroupAllObject(selectGroupObject())
+                deleteScheduleAllObject(selectScheduleObject())
                 for document in querySnapshot.documents {
                     print(document.data())
                     
                     self.scheduleConvert(target: document)
                 }
             }
+            self.scheduleData = selectScheduleObject()
+            self.showSchedule = self.filterSchedule()
+            self._tblList.reloadData()
         }
     }
                           
@@ -291,6 +308,18 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         data.scheduleId = target.documentID
         insertScheduleObject(Schedule(data))
         
+    }
+    
+    func filterSchedule() -> [Schedule] {
+        
+        showSchedule = []
+        for i in scheduleData {
+            if i.date == dateText {
+                showSchedule.append(i)
+            }
+        }
+        
+        return showSchedule
     }
       
     

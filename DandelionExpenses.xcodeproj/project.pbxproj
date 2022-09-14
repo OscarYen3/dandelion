@@ -270,6 +270,7 @@
 			children = (
 				0CC64F0328C87D8C007CE5A6 /* Cell */,
 				0CC64F0528C87DD3007CE5A6 /* Dlailog */,
+				0C77A2AE2766765300952A79 /* ViewController.swift */,
 				0C77A2C82766772F00952A79 /* CreateView.swift */,
 				0C89A695276CC9740032CD8D /* CharacterList.swift */,
 				0C89A6A1276CDA0E0032CD8D /* CharacterInfoView.swift */,
@@ -312,7 +313,6 @@
 				0C89A699276CC9EE0032CD8D /* AccountListDlg.swift */,
 				0C4B9587276911A700F8F644 /* AddMemberDlg.swift */,
 				0C754FAE28A2190700A9F5A1 /* DebtDlg.swift */,
-				0C77A2AE2766765300952A79 /* ViewController.swift */,
 				0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */,
 				0C46D02C28CF167900EB79C9 /* ScheduleEditDlg.swift */,
 				0C46D02D28CF167900EB79C9 /* ScheduleEditDlg.xib */,

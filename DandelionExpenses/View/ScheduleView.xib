@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScheduleView" customModule="DandelionExpenses" customModuleProvider="target">
             <connections>
-                <outlet property="_tblMenu" destination="7fe-az-VSJ" id="XgP-qX-rgW"/>
+                <outlet property="_tblList" destination="7fe-az-VSJ" id="hdS-mU-xoR"/>
                 <outlet property="btnEdit" destination="sOd-Nl-1SN" id="ucr-S4-qiE"/>
                 <outlet property="txtDate" destination="vko-Jo-bhL" id="3yi-fV-OQE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
