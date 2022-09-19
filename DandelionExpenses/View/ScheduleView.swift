@@ -13,14 +13,14 @@ import CoreData
 
 
 class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,ScheduleEditDlgDelegate {
-  
+    
     @IBOutlet weak var _tblList: UITableView!
     @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var txtDate: UITextField!
     
     var scheduleData: [Schedule] =  []
     var showSchedule: [Schedule] =  []
-    var m_oScheduleEditDlg : ScheduleEditDlg!
+    var m_oScheduleEditDlg: ScheduleEditDlg!
     let formatter = DateFormatter()
     var selectDateView = UIDatePicker()
     let dateToolBar = UIToolbar()
@@ -48,7 +48,7 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         let datenow = formatter.string(from: selectDateView.date)
         let endDateTime = formatter.date(from: datenow)
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        selectDateView.maximumDate = endDateTime
+        selectDateView.minimumDate = endDateTime
         dateToolBar.barStyle = UIBarStyle.default
         dateToolBar.isTranslucent = true
         dateToolBar.tintColor = .systemBlue
@@ -62,23 +62,13 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         selectDateView.addTarget(self,action:#selector(datePickerChanged),for: .valueChanged)
         
         addScheduleItem = UIBarButtonItem(image: #imageLiteral(resourceName: "calendar"), style: .plain, target: self, action: #selector(addScheduleClick))
-                self.navigationItem.rightBarButtonItem = addScheduleItem
-//        testData1.note = "A"
-//        testData2.note = "B"
-//        testData3.note = "C"
-//        testData4.note = "D"
-//        testData5.note = "E"
-//        scheduleData.append(testData1)
-//        scheduleData.append(testData2)
-//        scheduleData.append(testData3)
-//        scheduleData.append(testData4)
-//        scheduleData.append(testData5)
-        
+        self.navigationItem.rightBarButtonItem = addScheduleItem
+        readData()
     }
     
     @objc func addScheduleClick() {
         UIShowEditInfo(true,edit: false,code: 0)
-}
+    }
     
     @objc func doneClick()  {
         let date = dateText ?? Date()
@@ -110,7 +100,7 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         
         cell.lblIndex.text = "\(indexPath.row)"
         cell.lblEvent.text = "測試規劃"
-        cell.lblNote.text = scheduleData[indexPath.row].note
+        cell.lblNote.text = showSchedule[indexPath.row].note
         
         
         cell.topline.isHidden = indexPath.row == 0 ? true : false
@@ -149,12 +139,12 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//            if _tblMenu.isEditing {
-//                return .none
-//            } else {
-                return .delete
-//            }
-        }
+        //            if _tblMenu.isEditing {
+        //                return .none
+        //            } else {
+        return .delete
+        //            }
+    }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .default, title: "刪除") {
@@ -176,17 +166,12 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         }
     }
     
-    
-    
     func editScheduleCancel() {
         UIShowEditInfo(false,edit: true,code: 0)
     }
     
-    
     func editScheduleOk(scheduleProfile: Schedule) {
         UIShowEditInfo(false,edit: true,code: 0)
-    
-        
         if !netWork {
             let controller = UIAlertController(title: "請檢查網路", message: "沒有網路則無法新增" , preferredStyle: .alert)
             let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
@@ -207,7 +192,6 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
     
     func newScheduleOk(scheduleProfile: Schedule) {
         UIShowEditInfo(false,edit: true,code: 0)
-        
         if !netWork {
             let controller = UIAlertController(title: "請檢查網路", message: "沒有網路則無法新增" , preferredStyle: .alert)
             let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
@@ -218,16 +202,11 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
             addSchedule(scheduleProfile)
             readData()
         }
-        
-        
-      
     }
     
     @IBAction func editClick(_ sender: Any) {
         _tblList.isEditing = !_tblList.isEditing
     }
-    
-    
     
     func addSchedule(_ profile: Schedule) {
         _ = db.collection(String(format: "%@%@",UserDefaults.Account ?? Common.collection2,"Schedule")).addDocument(data: [
@@ -242,20 +221,19 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         }
         
     }
-                          
     
     func updateSchedule(_ target: Int, _ data: Schedule) {
-        _  = db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Schedule")).whereField("scheduleCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
-               if let querySnapshot = querySnapshot {
-                   let document = querySnapshot.documents.first
+        db.collection(String(format: "%@%@", UserDefaults.Account ?? Common.collection2,"Schedule")).whereField("scheduleCode", isEqualTo: target).getDocuments() { (querySnapshot, error) in
+            if let querySnapshot = querySnapshot {
+                let document = querySnapshot.documents.first
                 document?.reference.updateData(["scheduleCode":data.scheduleCode])
                 document?.reference.updateData(["date":data.date])
                 document?.reference.updateData(["event":data.event])
                 document?.reference.updateData(["note":data.note] ,completion: { (error) in })
-                   
-               }
-           }
-       }
+                
+            }
+        }
+    }
     
     func deleteScheduleDocument(_ target: String?) {
         guard let newTarget = target else { return }
@@ -287,15 +265,16 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
             self._tblList.reloadData()
         }
     }
-                          
-                          
-                          
+    
     func scheduleConvert(target: QueryDocumentSnapshot){
         let data: Schedule = Schedule()
         for i in target.data() {
             switch i.key {
             case "date":
-                data.date = i.value as! Date
+                formatter.dateFormat = "yyyy-MM-dd"
+                let abc = i.value as! Timestamp
+                let bbbb = abc.dateValue()
+                data.date = bbbb
             case "event":
                 data.event = i.value as! String
             case "note":
@@ -314,15 +293,16 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         
         showSchedule = []
         for i in scheduleData {
-            if i.date == dateText {
+            self.formatter.timeZone = TimeZone(abbreviation: "UTC")
+            var abc = formatter.string(from: i.date)
+            var def = formatter.string(from: dateText ?? Date())
+            if formatter.date(from: abc) == formatter.date(from: def) {
                 showSchedule.append(i)
             }
         }
         
         return showSchedule
     }
-      
-    
     
     private func DialogShow(_ oView: UIViewController , _ bShow:Bool) {
         

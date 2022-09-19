@@ -47,6 +47,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var m_oVersionUpdateDlg : VersionUpdateDlg?
     var groupInfo: GroupList = GroupList()
     var m_oScheduleView: ScheduleView!
+    let formatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -449,7 +450,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         for i in target.data() {
             switch i.key {
             case "date":
-                data.date = i.value as! Date
+               
+                formatter.dateFormat = "yyyy-MM-dd"
+                let abc = i.value as! Timestamp
+                let bbbb = abc.dateValue()
+                data.date = bbbb
             case "event":
                 data.event = i.value as! String
             case "note":
