@@ -265,8 +265,9 @@ func selectGroupObject() -> Array<GroupList> {
 //新增資料
 func insertScheduleObject(_ obj: Schedule) {
     let Data = NSEntityDescription.insertNewObject(forEntityName: "ScheduleDB", into: viewContext) as! ScheduleDB
-  
+    Data.scheduleId = obj.scheduleId
     Data.scheduleCode = Int32(obj.scheduleCode)
+    Data.sort =  Int32(obj.sort)
     Data.date = obj.date
     Data.event = obj.event
     Data.note = obj.note
@@ -316,6 +317,7 @@ func updateScheduleObject(_ data:Schedule) {
         let results = try viewContext.fetch(request)
         for item in results {
             if item.scheduleCode == data.scheduleCode {
+                item.sort =  Int32(data.sort)
                 item.date = data.date
                 item.event = data.event
                 item.note = data.note
@@ -345,7 +347,7 @@ func selectScheduleObject() -> Array<Schedule> {
         ConvertArray.append(Schedule(i))
     }
     
-    ConvertArray.sort { $0.scheduleCode > $1.scheduleCode}
+    ConvertArray.sort { $0.sort < $1.sort}
     return ConvertArray
     
 }

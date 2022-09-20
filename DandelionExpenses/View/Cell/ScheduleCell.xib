@@ -21,8 +21,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="w2x-ZZ-cbl">
                         <rect key="frame" x="10" y="10" width="312" height="145"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgf-r3-YHu">
-                                <rect key="frame" x="0.0" y="47.5" width="32.5" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fgf-r3-YHu">
+                                <rect key="frame" x="0.0" y="47.5" width="47" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="sif-Pu-xDQ"/>
                                 </constraints>
@@ -31,10 +31,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iik-9g-gAu">
-                                <rect key="frame" x="37.5" y="11" width="187.5" height="123"/>
+                                <rect key="frame" x="52" y="11" width="177" height="123"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="doSomeThing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFY-TD-6lN">
-                                        <rect key="frame" x="5" y="52.5" width="177.5" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="doSomeThing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jFY-TD-6lN">
+                                        <rect key="frame" x="5" y="52.5" width="167" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -48,8 +48,8 @@
                                     <constraint firstItem="jFY-TD-6lN" firstAttribute="centerY" secondItem="iik-9g-gAu" secondAttribute="centerY" id="zdx-G9-HK9"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022-09-07 12:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSP-1D-jsl">
-                                <rect key="frame" x="230" y="47.5" width="82" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022-09-07 12:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jSP-1D-jsl">
+                                <rect key="frame" x="234" y="47.5" width="78" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Ts3-1Y-4ni"/>
                                 </constraints>
@@ -60,7 +60,8 @@
                         </subviews>
                         <color key="backgroundColor" name="AccentColor"/>
                         <constraints>
-                            <constraint firstItem="iik-9g-gAu" firstAttribute="width" secondItem="w2x-ZZ-cbl" secondAttribute="width" multiplier="0.6" id="GMj-TR-fjL"/>
+                            <constraint firstItem="jSP-1D-jsl" firstAttribute="width" secondItem="w2x-ZZ-cbl" secondAttribute="width" multiplier="0.25" id="rRr-mN-yuY"/>
+                            <constraint firstItem="fgf-r3-YHu" firstAttribute="width" secondItem="w2x-ZZ-cbl" secondAttribute="width" multiplier="0.15" id="xQY-uI-bqO"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

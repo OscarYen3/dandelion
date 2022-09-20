@@ -8,11 +8,12 @@
 import Foundation
 
 class Schedule: Codable{
-    var scheduleId : String
-    var scheduleCode : Int
-    var date : Date
-    var event : String
-    var note : String
+    var scheduleId: String
+    var scheduleCode: Int
+    var date: Date
+    var event: String
+    var note: String
+    var sort: Int
     
     init() {
         self.scheduleId = ""
@@ -20,6 +21,7 @@ class Schedule: Codable{
         self.date = Date()
         self.event = ""
         self.note = ""
+        self.sort = 0
        
     }
     
@@ -29,6 +31,7 @@ class Schedule: Codable{
         self.date = obj.date ?? Date()
         self.event = obj.event ?? ""
         self.note = obj.note ?? ""
+        self.sort = Int(obj.sort)
         
     }
     
@@ -38,6 +41,7 @@ class Schedule: Codable{
         self.date = obj.date
         self.event = obj.event
         self.note = obj.note
+        self.sort = obj.sort
         
     }
     

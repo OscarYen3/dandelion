@@ -33,6 +33,8 @@ class ScheduleEditDlg: UIViewController, UITextViewDelegate {
     let dateToolBar = UIToolbar()
     var dateText: Date? = Date()
     
+    var detailData: Schedule?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +47,7 @@ class ScheduleEditDlg: UIViewController, UITextViewDelegate {
         let datenow = formatter.string(from: selectDateView.date)
         let endDateTime = formatter.date(from: datenow)
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        selectDateView.minimumDate = endDateTime
+//        selectDateView.minimumDate = endDateTime
         dateToolBar.barStyle = UIBarStyle.default
         dateToolBar.isTranslucent = true
         dateToolBar.tintColor = .systemBlue
@@ -65,10 +67,14 @@ class ScheduleEditDlg: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         lblTitle.text = titleName
-        if txtNote.text == "" {
+        if txtEvent.text == "" {
             let date = dateText ?? Date()
             txtDate.text = formatter.string(from: date)
         }
+        
+        txtEvent.text = detailData?.event
+        txtNote.text =  detailData?.note
+        txtDate.text =  formatter.string(from: detailData?.date ?? Date())
     }
 
     @IBAction func btnClick(_ sender: UIButton) {
@@ -82,15 +88,26 @@ class ScheduleEditDlg: UIViewController, UITextViewDelegate {
             
             break
         case btnOk:
-            
-            
-            if titleName == "新增行程" {
-                data.scheduleCode = Int(timeInterval)
-                self._delegate?.newScheduleOk(scheduleProfile: data)
-            } else if titleName == "編輯行程"  {
-                data.scheduleCode = userCodeValue
-                self._delegate?.editScheduleOk(scheduleProfile: data)
+            if dataCheck() {
+                if titleName == "新增行程" {
+                    data.scheduleCode = Int(timeInterval)
+                    data.date = dateText ?? Date()
+                    data.event = txtEvent.text ?? ""
+                    data.note = txtNote.text ?? ""
+                    self._delegate?.newScheduleOk(scheduleProfile: data)
+                } else if titleName == "編輯行程"  {
+                    data.scheduleCode = userCodeValue
+                    data.event = txtEvent.text ?? ""
+                    data.note = txtNote.text ?? ""
+                    data.scheduleId = detailData?.scheduleId ?? ""
+                    data.sort = detailData?.sort ?? 0
+                    self._delegate?.editScheduleOk(scheduleProfile: data)
+                }
+                
+            } else {
+                self.view.showToast(toastMessage: "事件不能為空", duration: 2)
             }
+            
            
             break
             
@@ -105,25 +122,10 @@ class ScheduleEditDlg: UIViewController, UITextViewDelegate {
     //=========================================================================
     func textViewDidBeginEditing(_ textView: UITextView) {
        
-        if txtNote.textColor == UIColor.lightGray {
-            txtNote.placeholder = nil
-            txtNote.textColor = UIColor.black
-        
-        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-       
-        if textView.text.count == 0 {
-            txtNote.placeholder = NSLocalizedString("note", comment: "")
-        }
-        else {
-            txtNote.placeholder =  ""
-            
-            
-        }
-        textView.borderColor = UIColor.lightGray
-        textView.borderWidth = 0
+        txtEvent.text =  textView.text
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -147,6 +149,14 @@ class ScheduleEditDlg: UIViewController, UITextViewDelegate {
     
     @objc func cancelClick()  {
         self.view.endEditing(true)
+    }
+    
+    func dataCheck() -> Bool {
+        var verify: Bool = false
+        if  txtEvent.text != "" {
+            verify = true
+        }
+        return verify
     }
 
 }

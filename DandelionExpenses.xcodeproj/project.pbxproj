@@ -74,6 +74,7 @@
 		0C9F97DA287D7BE400C643EC /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */; };
 		0C9F97DB287D7BE400C643EC /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */; };
 		0C9FB9F92766E1CA003FF5CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FB9F82766E1CA003FF5CD /* LaunchScreen.storyboard */; };
+		0CC2999328D9560700D9457E /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC2999228D9560700D9457E /* UITextView+Extension.swift */; };
 		0CC64F0A28C88356007CE5A6 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC64F0828C88356007CE5A6 /* ScheduleView.swift */; };
 		0CC64F0B28C88356007CE5A6 /* ScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC64F0928C88356007CE5A6 /* ScheduleView.xib */; };
 		0CC64F0E28C883C2007CE5A6 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC64F0C28C883C2007CE5A6 /* ScheduleCell.swift */; };
@@ -159,6 +160,7 @@
 		0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
 		0C9FB9F82766E1CA003FF5CD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0CC2999228D9560700D9457E /* UITextView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		0CC64F0828C88356007CE5A6 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		0CC64F0928C88356007CE5A6 /* ScheduleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleView.xib; sourceTree = "<group>"; };
 		0CC64F0C28C883C2007CE5A6 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 		0CC64F0428C87DAD007CE5A6 /* Ex+ */ = {
 			isa = PBXGroup;
 			children = (
+				0CC2999228D9560700D9457E /* UITextView+Extension.swift */,
 				0CE35B032880674C004874E9 /* SlideInTransition.swift */,
 				0CC99C5F2898D84E005C84D1 /* UILabel+Extension.swift */,
 				0CC99C602898D84E005C84D1 /* UIView+Extension.swift */,
@@ -512,6 +515,7 @@
 				0C89A6A3276CDA0E0032CD8D /* CharacterInfoView.swift in Sources */,
 				0CC64F1128C8848D007CE5A6 /* ScheduleModel.swift in Sources */,
 				0C77A2CF2766773B00952A79 /* DeatilProfile.swift in Sources */,
+				0CC2999328D9560700D9457E /* UITextView+Extension.swift in Sources */,
 				0C76B1A8276B7F7A00C513A4 /* Encodable+Extension.swift in Sources */,
 				0C754FA428A201A800A9F5A1 /* VersionUpdateDlg.swift in Sources */,
 				0C4B9589276911A700F8F644 /* AddMemberDlg.swift in Sources */,

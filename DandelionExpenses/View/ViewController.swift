@@ -450,7 +450,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         for i in target.data() {
             switch i.key {
             case "date":
-               
                 formatter.dateFormat = "yyyy-MM-dd"
                 let abc = i.value as! Timestamp
                 let bbbb = abc.dateValue()
@@ -459,10 +458,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 data.event = i.value as! String
             case "note":
                 data.note = i.value as! String
+            case "sort":
+                data.sort = i.value as! Int
+            case "scheduleCode":
+                data.scheduleCode = i.value as! Int
             default:
                 break
             }
-            
         }
         data.scheduleId = target.documentID
         insertScheduleObject(Schedule(data))
