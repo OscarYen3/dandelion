@@ -97,6 +97,7 @@ class ScheduleEditDlg: UIViewController, UITextViewDelegate {
                     self._delegate?.newScheduleOk(scheduleProfile: data)
                 } else if titleName == "編輯行程"  {
                     data.scheduleCode = userCodeValue
+                    data.date = dateText ?? Date()
                     data.event = txtEvent.text ?? ""
                     data.note = txtNote.text ?? ""
                     data.scheduleId = detailData?.scheduleId ?? ""

@@ -59,7 +59,7 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         
         addScheduleItem = UIBarButtonItem(image: #imageLiteral(resourceName: "calendar"), style: .plain, target: self, action: #selector(addScheduleClick))
         self.navigationItem.rightBarButtonItem = addScheduleItem
-       
+        self.btnEdit.isHidden = true
         readData()
     }
     
@@ -336,6 +336,8 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
                 showSchedule.append(i)
             }
         }
+        
+        self.btnEdit.isHidden = showSchedule.count == 0 ? true : false
         return showSchedule
     }
     

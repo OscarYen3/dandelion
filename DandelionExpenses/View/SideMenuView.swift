@@ -94,7 +94,7 @@ func OnCloseMenuwithztable(_ tag:Int) {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIDevice.current.userInterfaceIdiom == .pad ? 120 : 80
+        return UIDevice.current.userInterfaceIdiom == .pad ? 100 : 60
     }
     
     

@@ -30,7 +30,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7fe-az-VSJ">
-                    <rect key="frame" x="0.0" y="109" width="414" height="727"/>
+                    <rect key="frame" x="0.0" y="109" width="414" height="717"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="MwF-Cc-x6E"/>
@@ -38,7 +38,7 @@
                     </connections>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AzQ-xI-PqM">
-                    <rect key="frame" x="0.0" y="836" width="414" height="60"/>
+                    <rect key="frame" x="10" y="826" width="394" height="60"/>
                     <subviews>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIn-Wb-GzH">
                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="60"/>
@@ -50,13 +50,20 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOd-Nl-1SN">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                            <rect key="frame" x="0.0" y="0.0" width="394" height="60"/>
                             <color key="backgroundColor" red="0.70588235290000001" green="0.47058823529999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="編輯">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="editClick:" destination="-1" eventType="touchUpInside" id="Aco-Ug-wgW"/>
                             </connections>
@@ -72,13 +79,13 @@
             <constraints>
                 <constraint firstItem="vko-Jo-bhL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="11G-6Y-beO"/>
                 <constraint firstItem="vko-Jo-bhL" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="5Sg-Wc-EtK"/>
-                <constraint firstAttribute="bottom" secondItem="AzQ-xI-PqM" secondAttribute="bottom" id="ArJ-Og-Ftg"/>
+                <constraint firstAttribute="bottom" secondItem="AzQ-xI-PqM" secondAttribute="bottom" constant="10" id="ArJ-Og-Ftg"/>
                 <constraint firstItem="AzQ-xI-PqM" firstAttribute="top" secondItem="7fe-az-VSJ" secondAttribute="bottom" id="AxS-vR-avY"/>
                 <constraint firstItem="vko-Jo-bhL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="GLY-Sd-6Zp"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AzQ-xI-PqM" secondAttribute="trailing" id="dCX-nO-7Uu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AzQ-xI-PqM" secondAttribute="trailing" constant="10" id="dCX-nO-7Uu"/>
                 <constraint firstItem="7fe-az-VSJ" firstAttribute="top" secondItem="vko-Jo-bhL" secondAttribute="bottom" constant="10" id="f8c-J5-twR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7fe-az-VSJ" secondAttribute="trailing" id="n8R-Vt-apJ"/>
-                <constraint firstItem="AzQ-xI-PqM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="s35-Gg-Evn"/>
+                <constraint firstItem="AzQ-xI-PqM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="s35-Gg-Evn"/>
                 <constraint firstItem="7fe-az-VSJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="stw-kC-3TH"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="83.705357142857139"/>
