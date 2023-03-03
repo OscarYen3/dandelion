@@ -60,12 +60,13 @@ class ScheduleView: UIViewController,UITableViewDataSource, UITableViewDelegate,
         addScheduleItem = UIBarButtonItem(image: #imageLiteral(resourceName: "calendar"), style: .plain, target: self, action: #selector(addScheduleClick))
         self.navigationItem.rightBarButtonItem = addScheduleItem
         self.btnEdit.isHidden = true
-        readData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let date = dateText ?? Date()
         txtDate.text = formatter.string(from: date)
+        readData()
     }
     
     @objc func addScheduleClick() {
