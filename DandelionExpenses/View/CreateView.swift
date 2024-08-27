@@ -23,7 +23,6 @@ class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPi
     @IBOutlet weak var txtAmount: UITextField!
     @IBOutlet weak var useSegment: UISegmentedControl!
     @IBOutlet weak var btnConfirm: UIButton!
-    @IBOutlet weak var btnAdd: UIButton!
     
     @IBOutlet weak var btnAll: UIButton!
     @IBOutlet weak var btnAllCancel: UIButton!
@@ -49,6 +48,7 @@ class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPi
     var userCodeValue: Int = 0
     var myCollectionView : UICollectionView?
     var nameList: [Any] = []
+    var addMemberItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,14 +70,15 @@ class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPi
         myCollectionView?.dataSource = self
         myCollectionView?.delegate = self
         myCollectionView?.register(UINib(nibName: Common.xib_NameCell, bundle: nil), forCellWithReuseIdentifier: Common.xib_NameCell)
+        myCollectionView?.backgroundColor = .clear
         self.view.addSubview(myCollectionView ?? UICollectionView())
         selectViewSet()
 //        addShadow(btnConfirm)
         tetfiledDisplay(txtName)
         tetfiledDisplay(txtCategory)
         tetfiledDisplay(txtAmount)
-        
-        
+        addMemberItem = UIBarButtonItem(image: #imageLiteral(resourceName: "add-user2"), style: .plain, target: self, action: #selector(addClick))
+        self.navigationItem.rightBarButtonItem = addMemberItem
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         useSegment.setTitleTextAttributes(titleTextAttributes, for:.normal)
         useSegment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for:.selected)
@@ -108,13 +109,13 @@ class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPi
             maskView.isHidden = false
             myCollectionView?.isUserInteractionEnabled = false
             viewButton.isHidden = true
-            btnAdd.isHidden = true
+            self.navigationItem.rightBarButtonItem = nil
         } else {
             btnConfirm.isHidden = false
             maskView.isHidden = true
             myCollectionView?.isUserInteractionEnabled = true
             viewButton.isHidden = false
-            btnAdd.isHidden = true
+            self.navigationItem.rightBarButtonItem = addMemberItem
         }
         
     }
@@ -289,7 +290,7 @@ class CreateView: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPi
             DialogShow(oView, bShow)
         }
     }
-    @IBAction func addClick(_ sender: Any) {
+    @objc func addClick() {
         UIShowAddMember(true)
 //        let controller = UIAlertController(title: "提示", message: "尚未提供此功能", preferredStyle: .alert)
 //        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

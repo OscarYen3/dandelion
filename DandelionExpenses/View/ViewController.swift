@@ -17,8 +17,6 @@ import SwiftyJSON
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,CreateViewDelegate, MFMessageComposeViewControllerDelegate,AccountListDlgDelegate , UIPickerViewDelegate, UIPickerViewDataSource, SlideMenuDelegate, UIViewControllerTransitioningDelegate,CharacterListDelegate {
    
     
-
-    
     @IBOutlet weak var btnTab: UIButton!
     @IBOutlet weak var m_table: UITableView!
     @IBOutlet weak var lblAmount: UILabel!
@@ -45,13 +43,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var nameValue: String = ""
     var m_oSideMenu : SideMenuView?
     var m_oVersionUpdateDlg : VersionUpdateDlg?
+    var m_oQuestionDlg: QuestionDlg?
     var groupInfo: GroupList = GroupList()
     var m_oScheduleView: ScheduleView!
     let formatter = DateFormatter()
+    var questionItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         m_oVersionUpdateDlg = VersionUpdateDlg(nibName: Common.xib_VersionUpdateDlg, bundle: nil)
+        m_oQuestionDlg = QuestionDlg(nibName: Common.xib_QuestionDlg, bundle: nil)
         m_oScheduleView = ScheduleView(nibName: Common.xib_ScheduleView, bundle: nil)
         m_oSideMenu = SideMenuView(nibName: "SideMenuView", bundle: nil)
         rotateToPotrait()
@@ -59,7 +60,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         processView.transform = processView.transform.scaledBy(x: 1, y: 2)
         processView.trackTintColor = UIColor.systemGroupedBackground
        
-        
+        questionItem = UIBarButtonItem(image: #imageLiteral(resourceName: "question"), style: .plain, target: self, action: #selector(question))
+        self.navigationItem.rightBarButtonItem = questionItem
         
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
@@ -557,46 +559,56 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.present(oView, animated: false, completion: nil)
         }
     }
-    func sumAmount2(_ target: String) -> Int {
-        var amount: Int = 0
-        for i in datailInfo {
-            for name in i.whos {
-                if name == target {
-                    if i.use == "公費" {
-                        amount += i.amount
-                    } else if i.use == "領錢" {
-                        amount -= i.amount
-                    } else if i.use == "支出" {
-                        if i.name == name   {
-                            amount  += i.amount
-                        }
-                        amount -= i.amount / (i.whos.count)
-                    }
-                }
-            }
-        }
-        return amount
+    
+    @objc func question() {
+        UIShowQuestionDlg()
     }
     
-    func sumAmount(_ target: String) -> String {
-        var amount: Int = 0
+    func sumAmount2(_ target: String) -> Int {
+        var amount: Double = 0.0
         for i in datailInfo {
             for name in i.whos {
                 if name == target {
                     if i.use == "公費" {
-                        amount += i.amount
+                        amount += Double(i.amount)
                     } else if i.use == "領錢" {
-                        amount -= i.amount
+                        amount -= Double(i.amount)
                     } else if i.use == "支出" {
                         if i.name == name   {
-                            amount  += i.amount
+                            amount  += Double(i.amount)
                         }
-                        amount -= i.amount / (i.whos.count)
+                        amount -= ceil((Double(i.amount)) / Double((i.whos.count)))
                     }
                 }
             }
         }
-        return String(amount)
+        return Int(amount)
+    }
+    
+    func sumAmount(_ target: String,_ int: Bool) -> String {
+        var amount: Double = 0.0
+        for i in datailInfo {
+            for name in i.whos {
+                if name == target {
+                    if i.use == "公費" {
+                        amount += Double(i.amount)
+                    } else if i.use == "領錢" {
+                        amount -= Double(i.amount)
+                    } else if i.use == "支出" {
+                        if i.name == name   {
+                            amount  += Double(i.amount)
+                        }
+                        amount -= ceil((Double(i.amount)) / Double((i.whos.count)))
+                    }
+                }
+            }
+        }
+        if int {
+            return String(Int(amount))
+        } else {
+            return String(amount)
+        }
+        
     }
 
     @IBAction func toInfo(_ sender: Any) {
@@ -611,10 +623,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func toInfo(_ name: String) {
         if let oView = m_oCharacterInfoView {
-            oView.amountValue = sumAmount(name)
+            oView.amountValue = sumAmount(name, true)
             oView.nameValue = name
             oView.allDetailInfo = datailInfo
-            oView.debt = (Float(sumAmount(name)) ?? 0) / Float(debt)
+            oView.debt = (Float(sumAmount(name, true)) ?? 0) / Float(debt)
             oView.navigationItem.title = "詳細資料"
             self.navigationController?.pushViewController(oView, animated: true)
         }
@@ -646,11 +658,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             txtName.text = nameValue
         }
         
-        processView.progress = (Float(sumAmount(txtName.text ?? "")) ?? 0) / Float(debt)
-        if (Float(sumAmount(txtName.text ?? "")) ?? 0) >= 0 {
+        processView.progress = (Float(sumAmount(txtName.text ?? "", false)) ?? 0) / Float(debt)
+        if (Float(sumAmount(txtName.text ?? "", false)) ?? 0) >= 0 {
             processView.progress = 0 / 1
         }
-        lblInformation.text = sumAmount(txtName.text ?? "")
+        lblInformation.text = sumAmount(txtName.text ?? "", true)
         processView.isHidden = false
         lblInformation.isHidden = false
         self.view.endEditing(true)
@@ -791,6 +803,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     func UIShowVersionUpdateDlg() {
         if let oView = m_oVersionUpdateDlg {
+            DispatchQueue.main.async {
+                oView.modalPresentationStyle = .fullScreen
+                oView.modalPresentationStyle = .custom
+                oView.view.backgroundColor = UIColor.init(red: 4/255.0, green: 4/255.0, blue: 15/255.0, alpha: 0.75)
+                self.present(oView, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func UIShowQuestionDlg() {
+        if let oView = m_oQuestionDlg {
             DispatchQueue.main.async {
                 oView.modalPresentationStyle = .fullScreen
                 oView.modalPresentationStyle = .custom

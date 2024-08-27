@@ -42,7 +42,7 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource,
         m_table.register(UINib(nibName: Common.xib_CharacterCell, bundle: nil), forCellReuseIdentifier: Common.xib_CharacterCell)
         m_DlgAddMember = AddMemberDlg(nibName: Common.xib_AddMemberDlg, bundle: nil)
         m_oDebtDlg = DebtDlg(nibName: Common.xib_DebtDlg, bundle: nil)
-        addMemberItem = UIBarButtonItem(image: #imageLiteral(resourceName: "add-user"), style: .plain, target: self, action: #selector(addMenber))
+        addMemberItem = UIBarButtonItem(image: #imageLiteral(resourceName: "add-user2"), style: .plain, target: self, action: #selector(addMenber))
         self.navigationItem.rightBarButtonItem = addMemberItem
     }
     
@@ -107,24 +107,24 @@ class CharacterList: UIViewController,UITableViewDelegate,UITableViewDataSource,
     }
     
     func sumAmount(_ target: String) -> String {
-        var amount: Int = 0
+        var amount: Double = 0.0
         for i in datailInfo {
             for name in i.whos {
                 if name == target {
                     if i.use == "公費" {
-                        amount += i.amount
+                        amount += Double(i.amount)
                     } else if i.use == "領錢" {
-                        amount -= i.amount
+                        amount -= Double(i.amount)
                     } else if i.use == "支出" {
                         if i.name == name   {
-                            amount  += i.amount
+                            amount  += Double(i.amount)
                         }
-                        amount -= i.amount / (i.whos.count)
+                        amount -=  ceil((Double(i.amount)) / Double((i.whos.count)))
                     }
                 }
             }
         }
-        return String(amount)
+        return String(Int(amount))
     }
     
     func updateGroupList(_ target: Int, _ data: GroupList) {

@@ -115,7 +115,7 @@ class CharacterInfoView: UIViewController,UITableViewDelegate,UITableViewDataSou
         displaylabel = UILabel(frame: CGRect(x: 0, y: 0, width: 2*(radius+lineWidth), height: 2*(radius+lineWidth)))
         displaylabel?.textAlignment = .center
         displaylabel?.textColor = UIColor.white
-        displaylabel?.font = UIFont.boldSystemFont(ofSize:  36)
+        displaylabel?.font = UIFont.boldSystemFont(ofSize:  30)
         displaylabel?.text = "0"
         
         lblAmount.layer.addSublayer(circleLayer)

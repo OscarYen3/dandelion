@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s9W-HB-x2V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s9W-HB-x2V">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Sw-TH-lSI">
-                                <rect key="frame" x="52" y="98" width="310.5" height="158"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Sw-TH-lSI">
+                                <rect key="frame" x="52" y="112" width="310.5" height="168"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Inc-Mf-MRy">
                                         <rect key="frame" x="5" y="0.0" width="300.5" height="34"/>
@@ -53,11 +54,11 @@
                                         </subviews>
                                     </stackView>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vdi-VY-5G3">
-                                        <rect key="frame" x="5" y="49" width="300.5" height="4"/>
+                                        <rect key="frame" x="5" y="54" width="300.5" height="4"/>
                                         <color key="tintColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </progressView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="beH-1Y-pgH">
-                                        <rect key="frame" x="5" y="68" width="300.5" height="90"/>
+                                        <rect key="frame" x="5" y="78" width="300.5" height="90"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2AF-gF-I8L">
                                                 <rect key="frame" x="0.0" y="0.0" width="93.5" height="90"/>
@@ -172,7 +173,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qhl-40-1Yp">
-                                <rect key="frame" x="30" y="276" width="354" height="35"/>
+                                <rect key="frame" x="30" y="300" width="354" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Os3-0F-h8t">
                                         <rect key="frame" x="0.0" y="0.0" width="88.5" height="20.5"/>
@@ -204,13 +205,13 @@
                                 </constraints>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jg-Gu-IeB">
-                                <rect key="frame" x="0.0" y="316" width="414" height="490"/>
+                                <rect key="frame" x="0.0" y="340" width="414" height="466"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cYZ-Ep-rRN">
-                                        <rect key="frame" x="10" y="0.0" width="806.5" height="490"/>
+                                        <rect key="frame" x="10" y="0.0" width="806.5" height="466"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ihY-u6-BFl">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="490"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="466"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="9QP-be-eUQ"/>
@@ -218,7 +219,7 @@
                                                 </connections>
                                             </tableView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mDz-zo-r4s">
-                                                <rect key="frame" x="413" y="0.0" width="393.5" height="490"/>
+                                                <rect key="frame" x="413" y="0.0" width="393.5" height="466"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="3yD-7N-glx"/>
@@ -251,7 +252,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZB-Kj-Z35">
-                                <rect key="frame" x="55.5" y="835" width="81.5" height="31"/>
+                                <rect key="frame" x="43.5" y="831.5" width="93.5" height="34.5"/>
                                 <color key="backgroundColor" red="0.15686274509803921" green="0.21176470588235294" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -295,7 +296,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5m-AX-O9l">
-                                <rect key="frame" x="277" y="835" width="81.5" height="31"/>
+                                <rect key="frame" x="277" y="831.5" width="93.5" height="34.5"/>
                                 <color key="backgroundColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -353,7 +354,7 @@
                             <constraint firstItem="qhl-40-1Yp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r0F-ts-Aoh"/>
                             <constraint firstItem="Q5e-rI-8L7" firstAttribute="leading" secondItem="nZB-Kj-Z35" secondAttribute="trailing" constant="30" id="rWt-Qr-s9O"/>
                             <constraint firstItem="7Jg-Gu-IeB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vFI-hV-00W"/>
-                            <constraint firstItem="6Sw-TH-lSI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="xur-dU-DLO"/>
+                            <constraint firstItem="6Sw-TH-lSI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="xur-dU-DLO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Iz3-IF-NqI" secondAttribute="trailing" constant="10" id="yHd-Gl-b2U"/>
                         </constraints>
                     </view>
@@ -382,7 +383,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s9W-HB-x2V" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J1T-10-EHK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.15686274510000001" green="0.21176470589999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -428,7 +429,7 @@
     <resources>
         <image name="amount" width="512" height="513"/>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

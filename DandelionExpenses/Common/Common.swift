@@ -24,6 +24,7 @@ class Common {
     static let xib_CharacterList       =  "CharacterList"
     static let xib_CharacterInfoView   =  "CharacterInfoView"
     static let xib_VersionUpdateDlg    =  "VersionUpdateDlg"
+    static let xib_QuestionDlg         =  "QuestionDlg"
     static let xib_ScheduleView        =  "ScheduleView"
     static let collection              =  "Dandelion"
     static let collection2             =  "Public"

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C0D903F27D25E8100629B72 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0D903E27D25E8100629B72 /* AccountModel.swift */; };
+		0C1315D52C7DC004008F6EF6 /* QuestionDlg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1315D32C7DC004008F6EF6 /* QuestionDlg.swift */; };
+		0C1315D62C7DC004008F6EF6 /* QuestionDlg.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C1315D42C7DC004008F6EF6 /* QuestionDlg.xib */; };
 		0C3446C72876C51A00DDC252 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3446C62876C51A00DDC252 /* NotificationService.swift */; };
 		0C3446CB2876C51A00DDC252 /* DandelionNotify.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0C3446C42876C51A00DDC252 /* DandelionNotify.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0C3446D92876D6B100DDC252 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3446D82876D6B100DDC252 /* Log.swift */; };
@@ -111,6 +113,8 @@
 
 /* Begin PBXFileReference section */
 		0C0D903E27D25E8100629B72 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		0C1315D32C7DC004008F6EF6 /* QuestionDlg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDlg.swift; sourceTree = "<group>"; };
+		0C1315D42C7DC004008F6EF6 /* QuestionDlg.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionDlg.xib; sourceTree = "<group>"; };
 		0C3446BF2876C1AE00DDC252 /* DandelionExpenses.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DandelionExpenses.entitlements; sourceTree = "<group>"; };
 		0C3446C42876C51A00DDC252 /* DandelionNotify.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DandelionNotify.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C3446C62876C51A00DDC252 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -248,13 +252,17 @@
 				0C77A2B02766765300952A79 /* Main.storyboard */,
 				0C89A69A276CC9EE0032CD8D /* AccountListDlg.xib */,
 				0C4B9588276911A700F8F644 /* AddMemberDlg.xib */,
+				0C1315D42C7DC004008F6EF6 /* QuestionDlg.xib */,
+				0C46D02D28CF167900EB79C9 /* ScheduleEditDlg.xib */,
+				0C754FAF28A2190700A9F5A1 /* DebtDlg.xib */,
+				0C754FA328A201A800A9F5A1 /* VersionUpdateDlg.xib */,
 				0C77A2C72766772F00952A79 /* CreateView.xib */,
 				0C89A696276CC9740032CD8D /* CharacterList.xib */,
 				0C89A6A2276CDA0E0032CD8D /* CharacterInfoView.xib */,
 				0C9F97D5287D7A8300C643EC /* SideMenuView.xib */,
-				0C754FAF28A2190700A9F5A1 /* DebtDlg.xib */,
-				0C754FA328A201A800A9F5A1 /* VersionUpdateDlg.xib */,
+				0CC64F0928C88356007CE5A6 /* ScheduleView.xib */,
 				0C89A6A6276CFBAF0032CD8D /* NameCell.xib */,
+				0CC64F0D28C883C2007CE5A6 /* ScheduleCell.xib */,
 				0C9F97D9287D7BE400C643EC /* SideMenuCell.xib */,
 				0C89A69E276CD9D00032CD8D /* CharacterCell.xib */,
 				0C77A2CD2766773B00952A79 /* ExpensesCell.xib */,
@@ -278,7 +286,6 @@
 				0C89A6A1276CDA0E0032CD8D /* CharacterInfoView.swift */,
 				0C9F97D4287D7A8300C643EC /* SideMenuView.swift */,
 				0CC64F0828C88356007CE5A6 /* ScheduleView.swift */,
-				0CC64F0928C88356007CE5A6 /* ScheduleView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,7 +298,6 @@
 				0C89A6A5276CFBAF0032CD8D /* NameCell.swift */,
 				0C9F97D8287D7BE400C643EC /* SideMenuCell.swift */,
 				0CC64F0C28C883C2007CE5A6 /* ScheduleCell.swift */,
-				0CC64F0D28C883C2007CE5A6 /* ScheduleCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -318,7 +324,7 @@
 				0C754FAE28A2190700A9F5A1 /* DebtDlg.swift */,
 				0C754FA228A201A800A9F5A1 /* VersionUpdateDlg.swift */,
 				0C46D02C28CF167900EB79C9 /* ScheduleEditDlg.swift */,
-				0C46D02D28CF167900EB79C9 /* ScheduleEditDlg.xib */,
+				0C1315D32C7DC004008F6EF6 /* QuestionDlg.swift */,
 			);
 			path = Dlailog;
 			sourceTree = "<group>";
@@ -482,6 +488,7 @@
 				0C9F97D7287D7A8300C643EC /* SideMenuView.xib in Resources */,
 				0C754FA528A201A800A9F5A1 /* VersionUpdateDlg.xib in Resources */,
 				0C76B197276B7B6E00C513A4 /* GoogleService-Info.plist in Resources */,
+				0C1315D62C7DC004008F6EF6 /* QuestionDlg.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +512,7 @@
 				0C89A69F276CD9D00032CD8D /* CharacterCell.swift in Sources */,
 				0C3446D92876D6B100DDC252 /* Log.swift in Sources */,
 				0C769FA42767A5030012BD99 /* DandelionExpensesDB.xcdatamodeld in Sources */,
+				0C1315D52C7DC004008F6EF6 /* QuestionDlg.swift in Sources */,
 				0CC64F0A28C88356007CE5A6 /* ScheduleView.swift in Sources */,
 				0C89A697276CC9740032CD8D /* CharacterList.swift in Sources */,
 				0C89A6DA276E835C0032CD8D /* CoreDataStack.swift in Sources */,
@@ -851,8 +859,9 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = versionRange;
+				maximumVersion = 11.0.0;
+				minimumVersion = 10.0.0;
 			};
 		};
 		0C76B1D4276BA5E700C513A4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
